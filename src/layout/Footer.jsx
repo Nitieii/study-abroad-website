@@ -1,68 +1,90 @@
+import { Link } from "react-router-dom";
+import { MdSearch } from "react-icons/md";
+
 export default function Footer() {
   return (
     <footer id="footer">
-      <div className="footer-top">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3 col-md-6 footer-contact">
-              <img src="/logo.png" width={170} />
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-contact">
+              <h3>
+                MKGroup<span>.</span>
+              </h3>
               <p>
-                47 Tam Khương <br />
-                Phường Khương Thượng, Hà Nội
+                A108 Adam Street <br />
+                New York, NY 535022
                 <br />
-                Việt Nam
+                United States <br />
                 <br />
-                <br />
-                <strong>Số điện thoại:</strong> +1 5589 55488 55
+                <strong>Điện thoại:</strong> +1 5589 55488 55
                 <br />
                 <strong>Email:</strong> info@example.com
                 <br />
               </p>
             </div>
 
-            <div className="col-lg-3 col-md-6 footer-links">
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Đường Dẫn</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Trang chủ</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <Link href="#">Trang chủ</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Thông tin du học</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <Link href="#">Thông tin du học</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i> <a href="#">Tin tức</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <Link href="#">Tin tức</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>
-                  <a href="#">Góc du học sinh</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <Link href="#">Góc du học sinh</Link>
                 </li>
                 <li>
-                  <i className="bx bx-chevron-right"></i>
-                  <a href="#">Văn hoá các nước</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <Link href="#">Văn hoá các nước</Link>
                 </li>
               </ul>
             </div>
 
-            <div className="col-lg-3 col-md-6 footer-links">
-              <h4>Trang mạng xã hội của chúng tôi</h4>
-              <div className="social-links mt-3">
-                <a href="#" className="twitter">
-                  <i className="bx bxl-twitter"></i>
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Social Networks</h4>
+
+              <div class="social-links mt-3">
+                <a href="#" class="twitter">
+                  <i class="bx bxl-twitter"></i>
                 </a>
-                <a href="#" className="facebook">
-                  <i className="bx bxl-facebook"></i>
+                <a href="#" class="facebook">
+                  <i class="bx bxl-facebook"></i>
                 </a>
-                <a href="#" className="instagram">
-                  <i className="bx bxl-instagram"></i>
+                <a href="#" class="instagram">
+                  <i class="bx bxl-instagram"></i>
                 </a>
-                <a href="#" className="google-plus">
-                  <i className="bx bxl-skype"></i>
+                <a href="#" class="google-plus">
+                  <i class="bx bxl-skype"></i>
                 </a>
-                <a href="#" className="linkedin">
-                  <i className="bx bxl-linkedin"></i>
+                <a href="#" class="linkedin">
+                  <i class="bx bxl-linkedin"></i>
                 </a>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="container py-4">
+        <div class="copyright">
+          &copy; Copyright{" "}
+          <strong>
+            <span>MK Group</span>
+          </strong>
+          . All Rights Reserved
+        </div>
+        <div class="credits">
+          Thiết kế bởi <a href="https://nitieii.netlify.app/">Ngo Tuan Anh</a>
         </div>
       </div>
     </footer>
