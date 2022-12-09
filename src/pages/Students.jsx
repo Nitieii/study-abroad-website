@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import WSPGallery from "../components/Gallery";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 const items = [
   {
@@ -36,7 +39,39 @@ const items = [
   },
 ];
 
+const tabs = [
+  {
+    index: 0,
+    title: "Du học Hàn Quốc",
+  },
+  {
+    index: 1,
+    title: "Du học Đài Loan",
+  },
+  {
+    index: 2,
+    title: "Du học Trung Quốc",
+  },
+  {
+    index: 3,
+    title: "Du học Đức",
+  },
+  {
+    index: 4,
+    title: "Du học Úc",
+  },
+];
+
 const Students = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    setImages(items);
+    setLoading(false);
+  }, []);
+
   return (
     <main id="main" data-aos="fade-up">
       <section className="breadcrumbs">
@@ -56,11 +91,99 @@ const Students = () => {
       <section className="inner-page">
         <div className="container">
           <p style={{ marginBottom: 30, marginTop: 0 }}>
-            Album tập hợp những khoảnh khắc đáng nhớ của các du học sinh trên
-            chặng đường du học cùng MK Group!
+            Tổng hợp các thông tin du học Hàn Quốc mới nhất, cập nhật liên tục.
+            Giúp các bạn học sinh, sinh viên đến gần hơn với ước mơ du học của
+            mình.
           </p>
 
-          <WSPGallery galleryImages={items} />
+          <div className="row">
+            <div className="col-lg-8">
+              <Tabs
+                selectedIndex={selectedIndex}
+                onSelect={(tabIndex) => setSelectedIndex(tabIndex)}
+              >
+                <TabList>
+                  {tabs.map((tab) => (
+                    <Tab
+                      key={tab.index}
+                      style={{
+                        color:
+                          selectedIndex === tab.index ? "#2f9931" : "black",
+                        borderTop:
+                          selectedIndex === tab.index
+                            ? "2px solid #2f9931"
+                            : "none",
+                        borderLeft:
+                          selectedIndex === tab.index
+                            ? "2px solid #2f9931"
+                            : "none",
+                        borderRight:
+                          selectedIndex === tab.index
+                            ? "2px solid #2f9931"
+                            : "none",
+                        fontWeight:
+                          selectedIndex === tab.index ? "600" : "normal",
+                        fontFamily: "Roboto",
+                      }}
+                    >
+                      {tab.title}
+                    </Tab>
+                  ))}
+                </TabList>
+
+                {tabs &&
+                  tabs.map((tab, index) => {
+                    if (index === selectedIndex) {
+                      return (
+                        <TabPanel key={index}>
+                          <WSPGallery galleryImages={images} />
+                        </TabPanel>
+                      );
+                    }
+
+                    return <TabPanel>{tab}</TabPanel>;
+                  })}
+                <TabPanel></TabPanel>
+                <TabPanel>
+                  <h2>Any content 2</h2>
+                </TabPanel>
+                <TabPanel>
+                  <h2>Any content 3</h2>
+                </TabPanel>
+                <TabPanel>
+                  <h2>Any content 3</h2>
+                </TabPanel>
+                <TabPanel>
+                  <h2>Any content 3</h2>
+                </TabPanel>
+              </Tabs>
+            </div>
+
+            <div className="container col-lg-4">
+              <h5
+                className="align-items-center"
+                style={{
+                  borderBottom: "1px solid #2f9931",
+                  marginBottom: 15,
+                }}
+              >
+                Facebook fanpage
+              </h5>
+
+              <div className="row w-100">
+                <iframe
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDuHocMKGROUP&tabs=timeline&width=350&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=810266060395549"
+                  width="350"
+                  height="300"
+                  style={{ border: "none", overflow: "hidden" }}
+                  scrolling="no"
+                  frameborder="0"
+                  allowfullscreen="true"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
