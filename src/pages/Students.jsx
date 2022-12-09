@@ -4,6 +4,7 @@ import WSPGallery from "../components/Gallery";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
+import { usePathName } from "../hooks";
 
 const items = [
   {
@@ -67,6 +68,7 @@ const Students = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
+   const { handleGetPathName } = usePathName();
 
   useEffect(() => {
     setImages(items);
@@ -81,7 +83,14 @@ const Students = () => {
             <h2 style={{ fontWeight: "bold" }}>Góc Du Học Sinh</h2>
             <ol>
               <li>
-                <Link to="/">Trang Chủ</Link>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    handleGetPathName("/");
+                  }}
+                >
+                  Trang Chủ
+                </Link>
               </li>
               <li>Góc Du Học Sinh</li>
             </ol>
@@ -160,7 +169,7 @@ const Students = () => {
               </Tabs>
             </div>
 
-            <Fanpage/>
+            <Fanpage />
           </div>
         </div>
       </section>

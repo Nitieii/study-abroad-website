@@ -2,13 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
-import { HANDLE_GET_PATHNAME } from "../../store/pathNameSlice";
+import usePathName from '../hooks/usePathName'
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
-  const [pathName, setPathName] = useState(window.location.pathname);
-  const [open, setOpen] = useState(false);
+  // const [pathName, setPathName] = useState(window.location.pathname);
+  const {handleGetPathName,pathName} = usePathName()
   const [showSearch, setShowSearch] = useState(false);
+
   let menuRef = useRef();
   const select = (el, all = false) => {
     el = el.trim();
@@ -18,7 +19,7 @@ export default function NavBar() {
       return document.querySelector(el);
     }
   };
-
+  // console.log(handleGetPathName(window.location.pathname))
   const toggleMobileMenu = () => {
     select("#navbar").classList.add("navbar-mobile");
     select("#navbar").classList.add("bi-list");
@@ -48,8 +49,9 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-    setPathName(window.location.pathname);
-
+    // setPathName(window.location.pathname);
+    handleGetPathName(window.location.pathname)
+    console.log(pathName)
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
@@ -60,15 +62,6 @@ export default function NavBar() {
       }
     });
   }, [pathName]);
-
-  useEffect(() => {
-    let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-  });
 
   return (
     <>
@@ -115,7 +108,7 @@ export default function NavBar() {
                   className="nav-link scrollto"
                   to="/"
                   onClick={() => {
-                    setPathName("/");
+                    // setPathName("/");
                     handleCloseNavMobile();
                   }}
                 >
@@ -126,7 +119,8 @@ export default function NavBar() {
                 <Link
                   to="/thong-tin-du-hoc"
                   onClick={() => {
-                    setPathName("/thong-tin-du-hoc");
+                    // setPathName("/thong-tin-du-hoc");
+                    handleGetPathName("/thong-tin-du-hoc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -138,7 +132,8 @@ export default function NavBar() {
                     <Link
                       to="/thong-tin-du-hoc"
                       onClick={() => {
-                        setPathName("/thong-tin-du-hoc");
+                        // setPathName("/thong-tin-du-hoc");
+                          handleGetPathName("/thong-tin-du-hoc");
                         handleCloseNavMobile();
                       }}
                     >
@@ -150,7 +145,8 @@ export default function NavBar() {
                         <Link
                           to="/thong-tin-du-hoc"
                           onClick={() => {
-                            setPathName("/thong-tin-du-hoc");
+                            // setPathName("/thong-tin-du-hoc");
+                              handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -161,7 +157,8 @@ export default function NavBar() {
                         <Link
                           to="/thong-tin-du-hoc"
                           onClick={() => {
-                            setPathName("/thong-tin-du-hoc");
+                            // setPathName("/thong-tin-du-hoc");
+                              handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -189,7 +186,8 @@ export default function NavBar() {
                   className="nav-link scrollto"
                   to="/tin-tuc"
                   onClick={() => {
-                    setPathName("/tin-tuc");
+                    // setPathName("/tin-tuc");
+                     handleGetPathName("/tin-tuc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -200,7 +198,8 @@ export default function NavBar() {
                 <Link
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
-                    setPathName("/goc-du-hoc-sinh");
+                    // setPathName("/goc-du-hoc-sinh");
+                      handleGetPathName("/goc-du-hoc-sinh");
                     handleCloseNavMobile();
                   }}
                 >
@@ -230,7 +229,8 @@ export default function NavBar() {
                   className="nav-link scrollto"
                   to="/van-hoa-cac-nuoc"
                   onClick={() => {
-                    setPathName("/van-hoa-cac-nuoc");
+                    // setPathName("/van-hoa-cac-nuoc");
+                      handleGetPathName("/van-hoa-cac-nuoc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -242,7 +242,8 @@ export default function NavBar() {
                   className="nav-link scrollto"
                   to="/lien-he"
                   onClick={() => {
-                    setPathName("/lien-he");
+                    // setPathName("/lien-he");
+                     handleGetPathName("/lien-he");
                     handleCloseNavMobile();
                   }}
                 >

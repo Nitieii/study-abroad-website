@@ -6,6 +6,8 @@ import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import HotNews from "../components/HotNews";
 import '../assets/css/NewsDetail.css'
+import { usePathName } from "../hooks";
+
 const tabs = [
   {
     index: 0,
@@ -81,7 +83,7 @@ const newsContent = {
 const NewsDetail = () => {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
-
+   const { handleGetPathName } = usePathName();
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -97,10 +99,24 @@ const NewsDetail = () => {
             <h2 style={{ fontWeight: "bold" }}>{newsContent.title}</h2>
             <ol>
               <li>
-                <Link to="/">Trang Chủ</Link>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    handleGetPathName("/");
+                  }}
+                >
+                  Trang Chủ
+                </Link>
               </li>
               <li>
-                <Link to="/tin-tuc">Tin Tức</Link>
+                <Link
+                  to="/tin-tuc"
+                  onClick={() => {
+                    handleGetPathName("/tin-tuc");
+                  }}
+                >
+                  Tin Tức
+                </Link>
               </li>
               <li>{newsContent.title}</li>
             </ol>
@@ -111,7 +127,10 @@ const NewsDetail = () => {
       <section className="inner-page">
         <div className="container">
           <div className="row" style={{ marginTop: 30 }}>
-            <div className="container col-md-8 NewDetails" style={{ paddingRight: 30 }}>
+            <div
+              className="container col-md-8 NewDetails"
+              style={{ paddingRight: 30 }}
+            >
               <p
                 style={{ fontSize: "14px" }}
                 dangerouslySetInnerHTML={{ __html: newsContent.content }}
@@ -129,7 +148,7 @@ const NewsDetail = () => {
                 Tin tức hot nhất
               </h5>
 
-              <HotNews/>
+              <HotNews />
             </div>
           </div>
         </div>

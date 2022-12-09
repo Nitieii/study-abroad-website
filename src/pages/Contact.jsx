@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { usePathName } from "../hooks";
 
 const Contact = () => {
+   const { handleGetPathName } = usePathName();
   return (
     <main id="main" data-aos="fade-up">
       <section className="breadcrumbs">
@@ -9,7 +11,14 @@ const Contact = () => {
             <h2 style={{ fontWeight: "bold" }}>Liên Hệ</h2>
             <ol>
               <li>
-                <Link to="/">Trang chủ</Link>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    handleGetPathName("/");
+                  }}
+                >
+                  Trang chủ
+                </Link>
               </li>
               <li>Liên hệ</li>
             </ol>

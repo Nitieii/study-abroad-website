@@ -1,15 +1,15 @@
 import {createSlice} from "@reduxjs/toolkit"
 
-const initialSlice ={
+const initialState ={
     pathName: null
 }
 
 const slice = createSlice({
     name: 'pathName',
-    initialSlice,
+    initialState,
     reducers: {
         HANDLE_GET_PATHNAME:(state,action) => {
-            state.pathName = window.location.pathname
+            state.pathName = action.payload
         }
     }
 })

@@ -5,6 +5,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
+import { usePathName } from "../hooks";
 
 const tabs = [
   {
@@ -90,6 +91,7 @@ const Culture = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
+   const { handleGetPathName } = usePathName();
 
   useEffect(() => {
     setNews(newsContent);
@@ -104,7 +106,14 @@ const Culture = () => {
             <h2 style={{ fontWeight: "bold" }}>Văn Hoá Các Nước</h2>
             <ol>
               <li>
-                <Link to="/">Trang Chủ</Link>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    handleGetPathName("/");
+                  }}
+                >
+                  Trang Chủ
+                </Link>
               </li>
               <li>Văn Hoá Các Nước</li>
             </ol>
@@ -272,7 +281,7 @@ const Culture = () => {
               </div>
             </div>
 
-            <Fanpage/>
+            <Fanpage />
           </div>
         </div>
       </section>
