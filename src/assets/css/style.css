@@ -682,7 +682,19 @@ section {
 # News
 --------------------------------------------------------------*/
 
+.hotNews .tabs-index {
+  width: 100%;
+} 
 
+
+@media(max-width: 582px){
+  .tabs-index{
+    width: 10px;
+  }
+  }
+/* #homepage .news-title:hover{
+
+} */
 
 /*--------------------------------------------------------------
 # Information
