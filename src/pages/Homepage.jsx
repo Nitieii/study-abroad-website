@@ -290,6 +290,7 @@ const Homepage = () => {
                     />
                     {/* <Link to="/news"> */}
                     <Link
+                      to="/thong-tin-du-hoc"
                       className="news-title"
                       style={{
                         marginBottom: 10,
@@ -364,7 +365,7 @@ const Homepage = () => {
                       style={{ flexDirection: "column" }}
                     >
                       <Link
-                        to="/news"
+                        to="/information"
                         style={{
                           color: "black",
                           fontWeight: 500,
@@ -372,6 +373,7 @@ const Homepage = () => {
                         }}
                       >
                         {newsB.title}
+                        {/* <Link to="?tab=one" preventScrollReset={true} /> */}
                       </Link>
                       <p style={{ fontSize: 12, marginBottom: 10 }}>
                         🗓️{" "}
@@ -459,6 +461,7 @@ const Homepage = () => {
                     alt="Hình ảnh văn hoá các nước"
                   />
                   <Link
+                    to="/culture"
                     className="news-title"
                     style={{ marginBottom: 10, color: "black" }}
                   >

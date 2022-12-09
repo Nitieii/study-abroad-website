@@ -29,6 +29,8 @@ export default function NavBar() {
   };
 
   useEffect(() => {
+    setPathName(window.location.pathname);
+
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
