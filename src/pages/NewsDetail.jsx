@@ -110,7 +110,7 @@ const NewsDetail = () => {
       <section className="inner-page">
         <div className="container">
           <div className="row" style={{ marginTop: 30 }}>
-            <div className="container col-md-8" style={{ paddingRight: 30 }}>
+            <div className="container col-md-8 NewDetails" style={{ paddingRight: 30 }}>
               <p
                 style={{ fontSize: "14px" }}
                 dangerouslySetInnerHTML={{ __html: newsContent.content }}
