@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
+import { HANDLE_GET_PATHNAME } from "../../store/pathNameSlice";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,9 +20,9 @@ export default function NavBar() {
   };
 
   const toggleMobileMenu = () => {
-    select("#navbar").classList.toggle("navbar-mobile");
-    select("#navbar").classList.toggle("bi-list");
-    select("#navbar").classList.toggle("bi-x");
+    select("#navbar").classList.add("navbar-mobile");
+    select("#navbar").classList.add("bi-list");
+    select("#navbar").classList.add("bi-x");
   };
 
   const handleDropdownMobile = (e) => {
@@ -39,7 +40,13 @@ export default function NavBar() {
   const handleClose = () => {
     setShowSearch(false);
   };
-console.log(pathName)
+
+  const handleCloseNavMobile = () => {
+    select("#navbar").classList.remove("navbar-mobile");
+    select("#navbar").classList.remove("bi-list");
+    select("#navbar").classList.remove("bi-x");
+  };
+
   useEffect(() => {
     setPathName(window.location.pathname);
 
@@ -95,7 +102,10 @@ console.log(pathName)
       <header id="header" className="d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
           <Link to="/" className="logo">
-            <img src="https://todo-list-app-asdfasd.s3.amazonaws.com/logo.png" alt="" />
+            <img
+              src="https://todo-list-app-asdfasd.s3.amazonaws.com/logo.png"
+              alt=""
+            />
           </Link>
 
           <nav id="navbar" className="navbar">
@@ -106,7 +116,7 @@ console.log(pathName)
                   to="/"
                   onClick={() => {
                     setPathName("/");
-                    handleDropdownMobile();
+                    handleCloseNavMobile();
                   }}
                 >
                   Trang chủ
@@ -117,7 +127,7 @@ console.log(pathName)
                   to="/thong-tin-du-hoc"
                   onClick={() => {
                     setPathName("/thong-tin-du-hoc");
-                    handleDropdownMobile();
+                    handleCloseNavMobile();
                   }}
                 >
                   <span>Thông tin du học</span>{" "}
@@ -128,9 +138,8 @@ console.log(pathName)
                     <Link
                       to="/thong-tin-du-hoc"
                       onClick={() => {
-                        console.log("click");
                         setPathName("/thong-tin-du-hoc");
-                        handleDropdownMobile();
+                        handleCloseNavMobile();
                       }}
                     >
                       <span>Du học Hàn Quốc</span>{" "}
@@ -142,7 +151,7 @@ console.log(pathName)
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             setPathName("/thong-tin-du-hoc");
-                            handleDropdownMobile();
+                            handleCloseNavMobile();
                           }}
                         >
                           Du học tiếng
@@ -153,7 +162,7 @@ console.log(pathName)
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             setPathName("/thong-tin-du-hoc");
-                            handleDropdownMobile();
+                            handleCloseNavMobile();
                           }}
                         >
                           Du học nghề
@@ -181,7 +190,7 @@ console.log(pathName)
                   to="/tin-tuc"
                   onClick={() => {
                     setPathName("/tin-tuc");
-                    handleDropdownMobile();
+                    handleCloseNavMobile();
                   }}
                 >
                   Tin tức
@@ -192,7 +201,7 @@ console.log(pathName)
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
                     setPathName("/goc-du-hoc-sinh");
-                    handleDropdownMobile();
+                    handleCloseNavMobile();
                   }}
                 >
                   <span>Góc du học sinh</span>{" "}
@@ -222,17 +231,21 @@ console.log(pathName)
                   to="/van-hoa-cac-nuoc"
                   onClick={() => {
                     setPathName("/van-hoa-cac-nuoc");
-                    handleDropdownMobile();
+                    handleCloseNavMobile();
                   }}
                 >
                   Văn hoá các nước
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/lien-he"  onClick={() => {
+                <Link
+                  className="nav-link scrollto"
+                  to="/lien-he"
+                  onClick={() => {
                     setPathName("/lien-he");
-                   
-                  }}>
+                    handleCloseNavMobile();
+                  }}
+                >
                   Liên hệ
                 </Link>
               </li>
@@ -257,11 +270,12 @@ console.log(pathName)
                 </Link>
               </li>
             </ul>
-
-            <i
-              className="bi bi-list mobile-nav-toggle"
-              onClick={toggleMobileMenu}
-            ></i>
+            <CheckOutSideClick onClickOutSide={handleCloseNavMobile}>
+              <i
+                className="bi bi-list mobile-nav-toggle"
+                onClick={toggleMobileMenu}
+              ></i>
+            </CheckOutSideClick>
           </nav>
         </div>
       </header>

@@ -5,6 +5,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import HotNews from "../components/HotNews";
+import '../assets/css/NewsDetail.css'
 const tabs = [
   {
     index: 0,

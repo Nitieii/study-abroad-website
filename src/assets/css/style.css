@@ -195,7 +195,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 130px;
+  max-height: 130px !important;
 }
 
 .scrolled-offset {
@@ -841,20 +841,18 @@ section {
   margin: auto;
 }
 
-.number-items-hotnews{
+.number-items-hotnews {
   width: 30px;
   display: flex;
   justify-content: center;
   margin: auto 0;
 }
-.detail-hot-news{
-  display:flex;
+.detail-hot-news {
+  display: flex;
   align-items: center;
 }
 
 /* News details */
-
-
 
 /*--------------------------------------------------------------
 # Featured Services

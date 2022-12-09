@@ -1,16 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import authReducer from './AuthSlice'
-import filterReducer from './FilterSlice'
-import applicationReducer from './ApplicationSlice'
-import dealRegisterReducer from './DealRegisterSlice'
-import notiReducer from './NotiSlice'
+import pathNameReducer from './pathNameSlice'
+
 
 const rootReducer = {
-  auth: authReducer,
-  filter: filterReducer,
-  noti: notiReducer,
-  application: applicationReducer,
-  dealRegister: dealRegisterReducer,
+ pathName: pathNameReducer
 }
 
 export default configureStore({
