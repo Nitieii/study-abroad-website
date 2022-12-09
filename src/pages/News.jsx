@@ -23,10 +23,11 @@ const tabs = [
 const newsContent = [
   {
     _id: 1,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
+    title: "Tuyển sinh du học Hàn Quốc",
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320398641_21cded1bb15a2dfae7684a8c05e09e66.jpg",
   },
@@ -36,6 +37,7 @@ const newsContent = [
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320629262_7729baaac253c1a7d80a6415106e032e.jpg",
   },
@@ -45,6 +47,37 @@ const newsContent = [
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
+    thumbnail:
+      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
+  },
+  {
+    _id: 4,
+    title: "Tuyển sinh du học Hàn Quốc 2022",
+    content:
+      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
+    createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
+    thumbnail:
+      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320398641_21cded1bb15a2dfae7684a8c05e09e66.jpg",
+  },
+  {
+    _id: 5,
+    title: "Tuyển sinh du học Hàn Quốc 2022",
+    content:
+      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
+    createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
+    thumbnail:
+      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320629262_7729baaac253c1a7d80a6415106e032e.jpg",
+  },
+  {
+    _id: 6,
+    title: "Tuyển sinh du học Hàn Quốc 2022",
+    content:
+      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
+    createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
   },
@@ -63,7 +96,7 @@ const News = () => {
   }, []);
 
   return (
-    <main id="main" data-aos="fade-up">
+    <main id="main">
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
@@ -86,9 +119,10 @@ const News = () => {
             mình.
           </p>
 
-          {news.map((item) => {
+          {news.map((item, index) => {
             return (
               <div
+                key={index}
                 className="row"
                 style={{
                   borderBottom: "1px solid #e6e6e6",
@@ -110,6 +144,7 @@ const News = () => {
                 </div>
                 <div className="col-md-8">
                   <Link
+                    to={`/${item.metaUrl}`}
                     className="news-title"
                     style={{
                       marginBottom: 5,

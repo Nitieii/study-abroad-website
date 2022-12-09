@@ -22,6 +22,8 @@ export default function NavBar() {
   };
 
   useEffect(() => {
+    setPathName(window.location.pathname);
+
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
@@ -126,11 +128,7 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <Link
-                  className="nav-link scrollto"
-                  to="/lien-he"
-
-                >
+                <Link className="nav-link scrollto" to="/lien-he">
                   Liên hệ
                 </Link>
               </li>
