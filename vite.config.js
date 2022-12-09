@@ -7,4 +7,11 @@ export default defineConfig(
     plugins: [react()],
     base: "./",
   },
+  {
+    server: {
+      hmr: {
+        host: "localhost",
+      },
+    },
+  }
 );

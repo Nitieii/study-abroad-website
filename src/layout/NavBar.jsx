@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
+import CheckOutSideClick from "../components/CheckOutSideClick";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
   const [pathName, setPathName] = useState(window.location.pathname);
-
+  const [open, setOpen] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+  let menuRef = useRef();
   const select = (el, all = false) => {
     el = el.trim();
     if (all) {
@@ -21,6 +24,10 @@ export default function NavBar() {
     select("#navbar").classList.toggle("bi-x");
   };
 
+  const handleShowSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
   useEffect(() => {
     setPathName(window.location.pathname);
 
@@ -34,6 +41,15 @@ export default function NavBar() {
       }
     });
   }, [pathName]);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+  });
 
   return (
     <>
@@ -135,14 +151,30 @@ export default function NavBar() {
 
               <li>
                 <Link style={{ fontSize: "24px" }}>
-                  <MdSearch />
+                  <MdSearch onClick={handleShowSearch} />
+                  {showSearch && (
+                    <CheckOutSideClick onClickOutSide={handleShowSearch}>
+                      <div class="group">
+                        <input
+                          required=""
+                          type="text"
+                          class="input"
+                          placeholder="Nhập từ khóa tìm kiếm"
+                        />
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                      </div>
+                    </CheckOutSideClick>
+                  )}
                 </Link>
               </li>
             </ul>
+            {/* <CheckOutSideClick onClickOutSide={toggleClose}> */}
             <i
               className="bi bi-list mobile-nav-toggle"
               onClick={toggleMobileMenu}
             ></i>
+            {/* </CheckOutSideClick> */}
           </nav>
         </div>
       </header>
