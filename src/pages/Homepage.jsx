@@ -423,28 +423,27 @@ const Homepage = () => {
                     key={newsB._id}
                   >
                     <p
-                      className="col-md-1 d-flex align-items-center justify-content-center"
+                      className="number-items-hotnews"
                       style={{
                         backgroundColor: "#2f9931",
                         alignItems: "center",
                         fontWeight: "bold",
                         color: "white",
-                        paddingTop: 5,
-                        paddingBottom: 5,
+                        padding:7
                       }}
                     >
-                      {index}
+                      {index + 1}
                     </p>
 
                     <div
                       className="col-md-10 d-flex justify-content-between"
-                      style={{ flexDirection: "column" }}
+                      style={{ flexDirection: "column", marginLeft:10 }}
                     >
                       <Link
                         to="/information"
                         style={{
                           color: "black",
-                          fontWeight: 500,
+                          fontWeight: 600,
                           fontSize: 14,
                         }}
                       >

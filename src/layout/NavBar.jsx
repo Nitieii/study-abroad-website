@@ -95,7 +95,7 @@ export default function NavBar() {
       <header id="header" className="d-flex align-items-center">
         <div className="container d-flex align-items-center justify-content-between">
           <Link to="/" className="logo">
-            <img src="/logo.png" alt="" />
+            <img src="https://todo-list-app-asdfasd.s3.amazonaws.com/logo.png" alt="" />
           </Link>
 
           <nav id="navbar" className="navbar">
@@ -112,7 +112,7 @@ export default function NavBar() {
                   Trang chủ
                 </Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <Link
                   to="/thong-tin-du-hoc"
                   onClick={() => {
@@ -121,7 +121,7 @@ export default function NavBar() {
                   }}
                 >
                   <span>Thông tin du học</span>{" "}
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </Link>
                 <ul>
                   <li className="dropdown">
@@ -134,7 +134,7 @@ export default function NavBar() {
                       }}
                     >
                       <span>Du học Hàn Quốc</span>{" "}
-                      <i class="bi bi-chevron-right"></i>
+                      <i className="bi bi-chevron-right"></i>
                     </Link>
                     <ul>
                       <li>
@@ -187,7 +187,7 @@ export default function NavBar() {
                   Tin tức
                 </Link>
               </li>
-              <li class="dropdown">
+              <li className="dropdown">
                 <Link
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
@@ -196,7 +196,7 @@ export default function NavBar() {
                   }}
                 >
                   <span>Góc du học sinh</span>{" "}
-                  <i class="bi bi-chevron-down"></i>
+                  <i className="bi bi-chevron-down"></i>
                 </Link>
                 <ul>
                   <li>
@@ -242,15 +242,15 @@ export default function NavBar() {
                   <MdSearch onClick={handleShowSearch} />
                   {showSearch && (
                     <CheckOutSideClick onClickOutSide={handleClose}>
-                      <div class="group">
+                      <div className="group">
                         <input
                           required=""
                           type="text"
-                          class="input"
+                          className="input"
                           placeholder="Nhập từ khóa tìm kiếm"
                         />
-                        <span class="highlight"></span>
-                        <span class="bar"></span>
+                        <span className="highlight"></span>
+                        <span className="bar"></span>
                       </div>
                     </CheckOutSideClick>
                   )}

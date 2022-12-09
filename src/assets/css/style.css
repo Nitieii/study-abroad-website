@@ -840,6 +840,17 @@ section {
 .hot-news {
   margin: auto;
 }
+
+.number-items-hotnews{
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  margin: auto 0;
+}
+.detail-hot-news{
+  display:flex;
+  align-items: center;
+}
 /*--------------------------------------------------------------
 # Featured Services
 -----------------------------
