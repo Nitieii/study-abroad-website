@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
-
+import HotNews from "../components/HotNews";
 const tabs = [
   {
     index: 0,
@@ -128,57 +128,7 @@ const NewsDetail = () => {
                 Tin tức hot nhất
               </h5>
 
-              <div className="row w-100">
-                {hotNews.map((newsB, index) => (
-                  <div
-                    className="row d-flex align-items-center justify-content-center"
-                    style={{ marginBottom: 10 }}
-                    key={newsB._id}
-                  >
-                    <p
-                      className="col-md-1 d-flex align-items-center justify-content-center"
-                      style={{
-                        backgroundColor: "#2f9931",
-                        alignItems: "center",
-                        fontWeight: "bold",
-                        color: "white",
-                        paddingTop: 5,
-                        paddingBottom: 5,
-                      }}
-                    >
-                      {index}
-                    </p>
-
-                    <div
-                      className="col-md-10 d-flex justify-content-between"
-                      style={{ flexDirection: "column" }}
-                    >
-                      <Link
-                        to="/information"
-                        style={{
-                          color: "black",
-                          fontWeight: 500,
-                          fontSize: 14,
-                        }}
-                      >
-                        {newsB.title}
-                        {/* <Link to="?tab=one" preventScrollReset={true} /> */}
-                      </Link>
-                      <p style={{ fontSize: 12, marginBottom: 10 }}>
-                        🗓️{" "}
-                        {formatDistanceToNow(new Date(newsB.createdAt), {
-                          addSuffix: true,
-                          locale: vi,
-                        })}{" "}
-                        -{" "}
-                        <span style={{ color: "#2f9931", fontWeight: "bold" }}>
-                          MK Group
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <HotNews/>
             </div>
           </div>
         </div>

@@ -199,7 +199,32 @@ const News = () => {
               </button>
             </div>
           </div>
+        <div className="container col-lg-4">
+              <h5
+                className="align-items-center"
+                style={{
+                  borderBottom: "1px solid #2f9931",
+                  marginBottom: 15,
+                }}
+              >
+                Facebook fanpage
+              </h5>
+
+              <div className="row w-100">
+                <iframe
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDuHocMKGROUP&tabs=timeline&width=350&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=810266060395549"
+                  width="350"
+                  height="300"
+                  style={{ border: "none", overflow: "hidden" }}
+                  scrolling="no"
+                  frameborder="0"
+                  allowfullscreen="true"
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                ></iframe>
+              </div>
+            </div>
         </div>
+        
       </section>
     </main>
   );

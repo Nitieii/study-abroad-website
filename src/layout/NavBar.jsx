@@ -39,7 +39,7 @@ export default function NavBar() {
   const handleClose = () => {
     setShowSearch(false);
   };
-
+console.log(pathName)
   useEffect(() => {
     setPathName(window.location.pathname);
 
