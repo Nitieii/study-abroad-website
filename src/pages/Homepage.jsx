@@ -7,6 +7,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 
 import WSPGallery from "../components/Gallery";
+import { callbackify } from "util";
 
 const slides = [
   {
@@ -231,7 +232,7 @@ const Homepage = () => {
               backgroundSize: "cover",
             }}
           >
-            <div className="container" data-aos="zoom-out" data-aos-delay="100">
+            <div className="container">
               <h1>
                 Du học cùng <span>MK Group</span>
               </h1>
@@ -290,6 +291,7 @@ const Homepage = () => {
                     />
                     {/* <Link to="/news"> */}
                     <Link
+                      to="/thong-tin-du-hoc"
                       className="news-title"
                       style={{
                         marginBottom: 10,
@@ -364,7 +366,7 @@ const Homepage = () => {
                       style={{ flexDirection: "column" }}
                     >
                       <Link
-                        to="/news"
+                        to="/information"
                         style={{
                           color: "black",
                           fontWeight: 500,
@@ -372,6 +374,7 @@ const Homepage = () => {
                         }}
                       >
                         {newsB.title}
+                        {/* <Link to="?tab=one" preventScrollReset={true} /> */}
                       </Link>
                       <p style={{ fontSize: 12, marginBottom: 10 }}>
                         🗓️{" "}
@@ -459,6 +462,7 @@ const Homepage = () => {
                     alt="Hình ảnh văn hoá các nước"
                   />
                   <Link
+                    to="/culture"
                     className="news-title"
                     style={{ marginBottom: 10, color: "black" }}
                   >
@@ -494,15 +498,13 @@ const Homepage = () => {
       </div>
 
       <section id="testimonials" className="testimonials">
-        <div className="container" data-aos="zoom-in">
+        <div className="container">
           <h3 style={{ color: "white", textAlign: "center", margin: "15px" }}>
             ĐÁNH GIÁ CỦA KHÁCH HÀNG
           </h3>
 
           <div
-            className="testimonials-slider swiper"
-            data-aos="fade-up"
-            data-aos-delay="100"
+            className="testimonials-slider swiper"        
           >
             <Carousel autoPlay infiniteLoop showThumbs={false}>
               {testimonials.length > 0 &&
@@ -530,7 +532,7 @@ const Homepage = () => {
       </section>
 
       <section id="faq" className="faq section-bg">
-        <div className="container" data-aos="fade-up">
+        <div className="container">
           <div className="section-title">
             <h3>
               Các <span>Câu Hỏi</span> Thường Gặp
@@ -703,14 +705,14 @@ const Homepage = () => {
       </section>
 
       <section id="contact" className="contact">
-        <div className="container" data-aos="fade-up">
+        <div className="container">
           <div className="section-title">
             <h3>
               <span>Đăng Kí Tư Vấn</span>
             </h3>
           </div>
 
-          <div className="row" data-aos="fade-up" data-aos-delay="100">
+          <div className="row">
             <div className="col-lg-6">
               <div className="info-box mb-4">
                 <i className="bx bx-map"></i>
@@ -736,7 +738,7 @@ const Homepage = () => {
             </div>
           </div>
 
-          <div className="row" data-aos="fade-up" data-aos-delay="100">
+          <div className="row">
             <div className="col-lg-6 ">
               <iframe
                 className="mb-4 mb-lg-0"
