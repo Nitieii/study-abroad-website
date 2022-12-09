@@ -1,15 +1,17 @@
-const Contact = () => {
+import { Link } from "react-router-dom";
+
+const Culture = () => {
   return (
     <main id="main" data-aos="fade-up">
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <h2>Inner Page</h2>
+            <h2 style={{ fontWeight: "bold" }}>Văn Hoá Các Nước</h2>
             <ol>
               <li>
-                <a href="index.html">Home</a>
+                <Link to="/">Trang Chủ</Link>
               </li>
-              <li>Inner Page</li>
+              <li>Văn Hoá Các Nước</li>
             </ol>
           </div>
         </div>
@@ -24,4 +26,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Culture;
