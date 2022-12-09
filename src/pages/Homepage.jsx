@@ -11,17 +11,17 @@ import WSPGallery from "../components/Gallery";
 
 const slides = [
   {
-    src: "/src/assets/img/hero.jpg",
+    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
   {
-    src: "/src/assets/img/hero2.jpg",
+    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero2.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
   {
-    src: "/src/assets/img/hero1.jpg",
+    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero1.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
@@ -60,7 +60,7 @@ const news = [
 const shortcut = [
   {
     _id: 1,
-    title: "DU HỌC HÀN QUỐC",
+    title: "Du học Hàn Quốc",
     content:
       "Các chương trình du học Hàn Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng",
     thumbnail:
@@ -68,7 +68,7 @@ const shortcut = [
   },
   {
     _id: 2,
-    title: "DU HỌC ĐÀI LOAN",
+    title: "Du học Đài Loan",
     content:
       "Các chương trình du học Đài Loan: Du học nghề + Học tiếng ngắn hạn + Học bổng",
     thumbnail:
@@ -76,7 +76,7 @@ const shortcut = [
   },
   {
     _id: 3,
-    title: "DU HỌC TRUNG QUỐC",
+    title: "Du học Trung Quốc",
     content:
       "Các chương trình du học Trung Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
     thumbnail:
@@ -84,7 +84,7 @@ const shortcut = [
   },
   {
     _id: 4,
-    title: "DU HỌC ĐỨC",
+    title: "Du học Đức",
     content:
       "Các chương trình du học Đức: Du học nghề + Học tiếng ngắn hạn + Học bổng ",
     thumbnail:
@@ -92,7 +92,7 @@ const shortcut = [
   },
   {
     _id: 5,
-    title: "DU HỌC ÚC",
+    title: "Du học Úc",
     content:
       "Các chương trình du học Úc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
     thumbnail:
@@ -227,35 +227,35 @@ const testimonials = [
     name: "Nguyễn Văn A",
     description:
       "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.",
-    avatar: "/src/assets/img/testimonials/testimonials-1.jpg",
+    avatar: "https://todo-list-app-asdfasd.s3.amazonaws.com/testimonials-1.jpg",
   },
   {
     _id: 2,
     name: "Ngô Tuấn Anh",
     description:
       "Enim nisi in nisi nisi dolor minim sint duis mollit magna laborum incididunt. Nostrud aliqua occaecat ullamco commodo deserunt cupidatat non elit anim. Tempor duis sint tempor consequat magna anim est ex in.",
-    avatar: "/src/assets/img/testimonials/testimonials-2.jpg",
+    avatar: "https://todo-list-app-asdfasd.s3.amazonaws.com/testimonials-2.jpg",
   },
   {
     _id: 3,
     name: "Lù Bá Lâm",
     description:
       "Aliquip do elit ex officia enim veniam laborum est laborum. Ad proident do sint ad. Eu id pariatur id laboris adipisicing do ea. Proident et et tempor velit tempor laborum minim sit mollit tempor laboris esse. Ex reprehenderit incididunt veniam est dolor Lorem officia dolore.",
-    avatar: "/src/assets/img/testimonials/testimonials-3.jpg",
+    avatar: "https://todo-list-app-asdfasd.s3.amazonaws.com/testimonials-3.jpg",
   },
   {
     _id: 4,
     name: "Nguyễn Văn A",
     description:
       "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.",
-    avatar: "/src/assets/img/testimonials/testimonials-4.jpg",
+    avatar: "https://todo-list-app-asdfasd.s3.amazonaws.com/testimonials-4.jpg",
   },
   {
     _id: 5,
     name: "Nguyễn Văn A",
     description:
       "Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.",
-    avatar: "/src/assets/img/testimonials/testimonials-5.jpg",
+    avatar: "https://todo-list-app-asdfasd.s3.amazonaws.com/testimonials-5.jpg",
   },
 ];
 
@@ -311,7 +311,7 @@ const Homepage = () => {
       </Carousel>
 
       <div className="container" style={{ marginTop: 50 }}>
-        <div id="shortcut" className="shortcut w-100">
+        <div id="shortcut" className="shortcut w-100 d-flex align-items-center">
           <div className="row w-100 justify-content-center ">
             {shortcuts.map((shortcutB, index) => (
               <div
@@ -325,8 +325,10 @@ const Homepage = () => {
                   effect="blur"
                   alt="Hình ảnh du học"
                 />
-                <p className="d-flex align-items-center">{shortcutB.title}</p>
-                <p>{shortcutB.content}</p>
+                <Link to="/thong-tin-du-hoc" className="shortcut-title">
+                  {shortcutB.title}
+                </Link>
+                <p className="shortcut-content">{shortcutB.content}</p>
               </div>
             ))}
           </div>
@@ -348,7 +350,7 @@ const Homepage = () => {
                 </h3>
               </div>
 
-              <div className="row w-100 d-flex align-items-center">
+              <div className="row d-flex align-items-center TTDH-responsive">
                 {news.map((newsB) => (
                   <div
                     className="col-md-4"
@@ -416,7 +418,7 @@ const Homepage = () => {
                 {hotNews.map((newsB, index) => (
                   <div
                     className="row d-flex align-items-center justify-content-center"
-                    style={{ marginBottom: 10 }}
+                    // style={{ marginBottom: 10 }}
                     key={newsB._id}
                   >
                     <p
@@ -582,7 +584,7 @@ const Homepage = () => {
       <section id="testimonials" className="testimonials">
         <div className="container" data-aos="zoom-in">
           <h3 style={{ color: "white", textAlign: "center", margin: "15px" }}>
-            ĐÁNH GIÁ CỦA KHÁCH HÀNG
+            Đánh Giá Của Khách Hàng
           </h3>
 
           <div

@@ -13,7 +13,7 @@ function CheckOutSideClick(props) {
   React.useEffect(() => {
     document.addEventListener("click",handleClickOutSide,true)
     return () => {
-        document.removeEventListener("click", handleClickOutSide)
+        document.removeEventListener("click", handleClickOutSide,true)
     }
   },[])
 

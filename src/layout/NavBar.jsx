@@ -24,8 +24,20 @@ export default function NavBar() {
     select("#navbar").classList.toggle("bi-x");
   };
 
+  const handleDropdownMobile = (e) => {
+    if (select("#navbar").classList.contains("navbar-mobile")) {
+      e.preventDefault();
+      this.nextElementSibling.classList.toggle("dropdown-active");
+    }
+  };
+
   const handleShowSearch = () => {
     setShowSearch(!showSearch);
+    select('#navbar').classList.toggle('navbar-search')
+  };
+
+  const handleClose = () => {
+    setShowSearch(false);
   };
 
   useEffect(() => {
@@ -94,21 +106,51 @@ export default function NavBar() {
                   to="/"
                   onClick={() => {
                     setPathName("/");
+                    handleDropdownMobile();
                   }}
                 >
                   Trang chủ
                 </Link>
               </li>
-              <li>
+              <li class="dropdown">
                 <Link
-                  className="nav-link scrollto"
                   to="/thong-tin-du-hoc"
                   onClick={() => {
                     setPathName("/thong-tin-du-hoc");
+                    handleDropdownMobile();
                   }}
                 >
-                  Thông tin du học
+                  <span>Thông tin du học</span>{" "}
+                  <i class="bi bi-chevron-down"></i>
                 </Link>
+                <ul>
+                  <li className="dropdown">
+                    <a href="/thong-tin-du-hoc">
+                      <span>Du học Hàn Quốc</span>{" "}
+                      <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="#">Du học tiếng</a>
+                      </li>
+                      <li>
+                        <a href="#">Du học nghề</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link
@@ -116,21 +158,40 @@ export default function NavBar() {
                   to="/tin-tuc"
                   onClick={() => {
                     setPathName("/tin-tuc");
+                    handleDropdownMobile();
                   }}
                 >
                   Tin tức
                 </Link>
               </li>
-              <li>
+              <li class="dropdown">
                 <Link
-                  className="nav-link scrollto "
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
                     setPathName("/goc-du-hoc-sinh");
+                    handleDropdownMobile();
                   }}
                 >
-                  Góc du học sinh
+                  <span>Góc du học sinh</span>{" "}
+                  <i class="bi bi-chevron-down"></i>
                 </Link>
+                <ul>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Hàn Quốc</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                  </li>
+                  <li>
+                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link
@@ -138,6 +199,7 @@ export default function NavBar() {
                   to="/van-hoa-cac-nuoc"
                   onClick={() => {
                     setPathName("/van-hoa-cac-nuoc");
+                    handleDropdownMobile();
                   }}
                 >
                   Văn hoá các nước
@@ -153,7 +215,7 @@ export default function NavBar() {
                 <Link style={{ fontSize: "24px" }}>
                   <MdSearch onClick={handleShowSearch} />
                   {showSearch && (
-                    <CheckOutSideClick onClickOutSide={handleShowSearch}>
+                    <CheckOutSideClick onClickOutSide={handleClose}>
                       <div class="group">
                         <input
                           required=""
@@ -169,12 +231,11 @@ export default function NavBar() {
                 </Link>
               </li>
             </ul>
-            {/* <CheckOutSideClick onClickOutSide={toggleClose}> */}
+
             <i
               className="bi bi-list mobile-nav-toggle"
               onClick={toggleMobileMenu}
             ></i>
-            {/* </CheckOutSideClick> */}
           </nav>
         </div>
       </header>

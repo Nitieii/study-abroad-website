@@ -113,7 +113,7 @@ const Information = () => {
 
       <section className="inner-page">
         <div className="container">
-          <p style={{ marginBottom: 30, marginTop: 0 }}>
+          <p style={{ marginBottom: 30, marginTop: 30 }}>
             Tổng hợp các thông tin du học Hàn Quốc mới nhất, cập nhật liên tục.
             Giúp các bạn học sinh, sinh viên đến gần hơn với ước mơ du học của
             mình.
