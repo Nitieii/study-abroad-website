@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -56,6 +57,49 @@ const news = [
   },
 ];
 
+const shortcut = [
+  {
+    _id: 1,
+    title: "DU HỌC HÀN QUỐC",
+    content:
+      "Các chương trình du học Hàn Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng",
+    thumbnail:
+      "https://images.unsplash.com/photo-1578648574417-15941a4751bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+  },
+  {
+    _id: 2,
+    title: "DU HỌC ĐÀI LOAN",
+    content:
+      "Các chương trình du học Đài Loan: Du học nghề + Học tiếng ngắn hạn + Học bổng",
+    thumbnail:
+      "https://images.unsplash.com/photo-1539469520861-6ece02538a10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+  },
+  {
+    _id: 3,
+    title: "DU HỌC TRUNG QUỐC",
+    content:
+      "Các chương trình du học Trung Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
+    thumbnail:
+      "https://images.unsplash.com/photo-1533552755457-5b471cb2ab11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    _id: 4,
+    title: "DU HỌC ĐỨC",
+    content:
+      "Các chương trình du học Đức: Du học nghề + Học tiếng ngắn hạn + Học bổng ",
+    thumbnail:
+      "https://images.unsplash.com/photo-1648467884947-e636d39b5504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+  },
+  {
+    _id: 5,
+    title: "DU HỌC ÚC",
+    content:
+      "Các chương trình du học Úc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
+    thumbnail:
+      "https://images.unsplash.com/photo-1580417992497-a0c602adde05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+  },
+];
+
 const hotNews = [
   {
     _id: 1,
@@ -85,7 +129,7 @@ const hotNews = [
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
   },
   {
-    _id: 3,
+    _id: 4,
     title: "Tuyển sinh du học Hàn Quốc 2022",
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
@@ -94,7 +138,7 @@ const hotNews = [
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
   },
   {
-    _id: 3,
+    _id: 5,
     title: "Tuyển sinh du học Hàn Quốc 2022",
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
@@ -216,6 +260,12 @@ const testimonials = [
 ];
 
 const Homepage = () => {
+  const [shortcuts, setShortCuts] = useState([]);
+
+  useEffect(() => {
+    setShortCuts(shortcut);
+  });
+
   return (
     <div>
       <Carousel autoPlay autoFocus infiniteLoop showThumbs={false}>
@@ -259,6 +309,29 @@ const Homepage = () => {
           </section>
         ))}
       </Carousel>
+
+      <div className="container" style={{ marginTop: 50 }}>
+        <div id="shortcut" className="shortcut w-100">
+          <div className="row w-100 justify-content-center ">
+            {shortcuts.map((shortcutB, index) => (
+              <div
+                className="col"
+                style={{ paddingRight: 10, paddingLeft: 10 }}
+                key={shortcutB._id}
+              >
+                <img
+                  src={shortcutB.thumbnail}
+                  className="shortcut-thumbnail"
+                  effect="blur"
+                  alt="Hình ảnh du học"
+                />
+                <p className="d-flex align-items-center">{shortcutB.title}</p>
+                <p>{shortcutB.content}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       <div className="container">
         <div id="information" className="information d-flex align-items-center">
@@ -396,7 +469,6 @@ const Homepage = () => {
       </div>
 
       <section id="break-section" className="break-section"></section>
-
       <div className="container">
         <div id="information" className="information">
           <div className="row">
@@ -428,8 +500,8 @@ const Homepage = () => {
                   height="300"
                   style={{ border: "none", overflow: "hidden" }}
                   scrolling="no"
-                  frameborder="0"
-                  allowfullscreen="true"
+                  frameBorder="0"
+                  allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                 ></iframe>
               </div>
@@ -442,55 +514,66 @@ const Homepage = () => {
 
       <div className="container">
         <div id="information" className="information d-flex align-items-center">
-          <div className="container">
-            <h3 className="align-items-center section-title">
-              Văn Hoá <span style={{ color: "#2f9931" }}>Các Nước</span>
-            </h3>
+          <div className="row">
+            <div className="container col-md-8">
+              <h3 className="align-items-center section-title">
+                Văn Hoá <span style={{ color: "#2f9931" }}>Các Nước</span>
+              </h3>
 
-            <div className="row w-100 d-flex align-items-center">
-              {newsCulture.map((newsB) => (
-                <div
-                  className="col-lg-4"
-                  style={{ paddingRight: 10, paddingLeft: 10 }}
-                  key={newsB._id}
-                >
-                  <img
-                    src={newsB.thumbnail}
-                    className="news-thumbnail"
-                    effect="blur"
-                    alt="Hình ảnh văn hoá các nước"
-                  />
-                  <Link
-                    to="/culture"
-                    className="news-title"
-                    style={{ marginBottom: 10, color: "black" }}
-                  >
-                    {newsB.title}
-                  </Link>
-                  <p
-                    style={{
-                      fontSize: 12,
-                      marginBottom: 10,
-                    }}
-                  >
-                    🗓️{" "}
-                    {formatDistanceToNow(new Date(newsB.createdAt), {
-                      addSuffix: true,
-                      locale: vi,
-                    })}{" "}
-                    -{" "}
-                    <span style={{ color: "#2f9931", fontWeight: "bold" }}>
-                      MK Group
-                    </span>
-                  </p>
+              <div className="row w-100 d-flex align-items-center">
+                {newsCulture.map((newsB) => (
                   <div
-                    style={{ fontSize: "14px" }}
-                    dangerouslySetInnerHTML={{
-                      __html: newsB.content,
-                    }}
-                  />
-                </div>
-              ))}
+                    className="col-lg-4"
+                    style={{ paddingRight: 10, paddingLeft: 10 }}
+                    key={newsB._id}
+                  >
+                    <img
+                      src={newsB.thumbnail}
+                      className="news-thumbnail"
+                      effect="blur"
+                      alt="Hình ảnh văn hoá các nước"
+                    />
+                    <Link
+                      to="/culture"
+                      className="news-title"
+                      style={{ marginBottom: 10, color: "black" }}
+                    >
+                      {newsB.title}
+                    </Link>
+                    <p
+                      style={{
+                        fontSize: 12,
+                        marginBottom: 10,
+                      }}
+                    >
+                      🗓️{" "}
+                      {formatDistanceToNow(new Date(newsB.createdAt), {
+                        addSuffix: true,
+                        locale: vi,
+                      })}{" "}
+                      -{" "}
+                      <span style={{ color: "#2f9931", fontWeight: "bold" }}>
+                        MK Group
+                      </span>
+                    </p>
+                    <div
+                      style={{ fontSize: "14px" }}
+                      dangerouslySetInnerHTML={{
+                        __html: newsB.content,
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="col-md-4">
+              <img
+                src="https://images.unsplash.com/photo-1522547902298-51566e4fb383?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+                className="widget-thumbnail"
+                effect="blur"
+                alt="Hình ảnh văn hoá các nước"
+              />
             </div>
           </div>
         </div>

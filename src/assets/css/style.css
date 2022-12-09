@@ -679,23 +679,23 @@ section {
 }
 
 /*--------------------------------------------------------------
-# News
+# Shortcut
 --------------------------------------------------------------*/
-
-.hotNews .tabs-index {
+#shortcut .shortcut-thumbnail {
   width: 100%;
-} 
+  height: 200px;
+  object-fit: cover;
+}
 
 
-@media(max-width: 582px){
-  .tabs-index{
-    width: 10px;
-  }
-  }
-/* #homepage .news-title:hover{
+#shortcut .shortcut-content{
+  font-size: 12px;
+}
 
-} */
-
+#shortcut .shortcut-title{
+  font-size: 14px;
+  color: red;
+}
 /*--------------------------------------------------------------
 # Information
 --------------------------------------------------------------*/
@@ -717,6 +717,12 @@ section {
 
 #information .container .more-button:hover .col a:hover {
   color: "#2f9931";
+}
+
+#information .widget-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*--------------------------------------------------------------
