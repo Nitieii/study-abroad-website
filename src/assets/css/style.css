@@ -366,14 +366,6 @@ h6 {
   }
 }
 
-@media (max-width: 768px) {
-  #information .news-thumbnail {
-    width: 100%;
-    height: 200px !important;
-    object-fit: cover;
-  }
-}
-
 .navbar-mobile {
   position: fixed;
   overflow: hidden;
@@ -479,8 +471,9 @@ h6 {
   background: rgba(9, 9, 9, 0.9);
   transition: 0.3s;
   z-index: 999;
+}
 
-}.group {
+.group {
   position: absolute;
   top: 130%;
   right: 0%;
@@ -608,7 +601,7 @@ h6 {
 
 @media (max-width: 768px) {
   #hero {
-    height: 100vh;
+    height: 50vh !important;
   }
 
   #hero h1 {
@@ -738,6 +731,37 @@ section {
 /*--------------------------------------------------------------
 # Shortcut
 --------------------------------------------------------------*/
+@media (max-width: 1400px) {
+  .shortcut-item {
+    flex: 0 0 auto;
+    width: 33.33% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .shortcut-item {
+    flex: 0 0 auto;
+    width: 100% !important;
+  }
+}
+
+.nopadding {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.shortcut-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.shortcut-item {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
 #shortcut .shortcut-thumbnail {
   width: 100%;
   height: 200px;
@@ -764,9 +788,21 @@ section {
   margin-top: 0px;
 }
 
+#shortcut .shortcut-title:hover {
+  color: #2f9931;
+}
+
 /*--------------------------------------------------------------
 # Information
 --------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+  #information .news-thumbnail {
+    width: 100%;
+    height: 200px !important;
+    object-fit: cover;
+  }
+}
 
 #information {
   margin-top: 20px;
@@ -774,15 +810,20 @@ section {
 
 #information .news-thumbnail {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
 #information .news-title {
-  color: "#000" !important;
+  color: #000;
   font-weight: bold;
+  margin-bottom: 10;
+  margin-top: 20;
+}
 
+#information .news-title:hover {
+  color: #2f9931;
 }
 
 #information .container .more-button:hover .col a:hover {
@@ -790,15 +831,24 @@ section {
 }
 
 #information .widget-thumbnail {
+  max-height: 500px;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.hot-news {
+  margin: auto;
+}
 /*--------------------------------------------------------------
 # Featured Services
 -----------------------------
 ---------------------------------*/
+@media (max-width: 768px) {
+  .FB-Fanpage {
+    display: none !important;
+  }
+}
 .featured-services .icon-box {
   padding: 30px;
   position: relative;

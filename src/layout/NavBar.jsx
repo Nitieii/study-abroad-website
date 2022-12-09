@@ -27,13 +27,13 @@ export default function NavBar() {
   const handleDropdownMobile = (e) => {
     if (select("#navbar").classList.contains("navbar-mobile")) {
       e.preventDefault();
-      this.nextElementSibling.classList.toggle("dropdown-active");
+      e.nextElementSibling.classList.toggle("dropdown-active");
     }
   };
 
   const handleShowSearch = () => {
     setShowSearch(!showSearch);
-    select('#navbar').classList.toggle('navbar-search')
+    // select('#navbar').classList.toggle('navbar-select')
   };
 
   const handleClose = () => {
@@ -125,16 +125,39 @@ export default function NavBar() {
                 </Link>
                 <ul>
                   <li className="dropdown">
-                    <a href="/thong-tin-du-hoc">
+                    <Link
+                      to="/thong-tin-du-hoc"
+                      onClick={() => {
+                        console.log("click");
+                        setPathName("/thong-tin-du-hoc");
+                        handleDropdownMobile();
+                      }}
+                    >
                       <span>Du học Hàn Quốc</span>{" "}
                       <i class="bi bi-chevron-right"></i>
-                    </a>
+                    </Link>
                     <ul>
                       <li>
-                        <a href="#">Du học tiếng</a>
+                        <Link
+                          to="/thong-tin-du-hoc"
+                          onClick={() => {
+                            setPathName("/thong-tin-du-hoc");
+                            handleDropdownMobile();
+                          }}
+                        >
+                          Du học tiếng
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">Du học nghề</a>
+                        <Link
+                          to="/thong-tin-du-hoc"
+                          onClick={() => {
+                            setPathName("/thong-tin-du-hoc");
+                            handleDropdownMobile();
+                          }}
+                        >
+                          Du học nghề
+                        </Link>
                       </li>
                     </ul>
                   </li>
@@ -206,7 +229,10 @@ export default function NavBar() {
                 </Link>
               </li>
               <li>
-                <Link className="nav-link scrollto" to="/lien-he">
+                <Link className="nav-link scrollto" to="/lien-he"  onClick={() => {
+                    setPathName("/lien-he");
+                   
+                  }}>
                   Liên hệ
                 </Link>
               </li>

@@ -30,10 +30,11 @@ const slides = [
 const news = [
   {
     _id: 1,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
+    title: "Tuyển sinh du học Hàn Quốc",
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320398641_21cded1bb15a2dfae7684a8c05e09e66.jpg",
   },
@@ -43,6 +44,7 @@ const news = [
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320629262_7729baaac253c1a7d80a6415106e032e.jpg",
   },
@@ -52,6 +54,7 @@ const news = [
     content:
       "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
     createdAt: "2022-12-06T07:00:00.000Z",
+    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
     thumbnail:
       "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
   },
@@ -312,11 +315,17 @@ const Homepage = () => {
 
       <div className="container" style={{ marginTop: 50 }}>
         <div id="shortcut" className="shortcut w-100 d-flex align-items-center">
-          <div className="row w-100 justify-content-center ">
+          <div
+            className="row justify-content-center shortcut-list"
+            style={{ boxSizing: "border-box" }}
+          >
             {shortcuts.map((shortcutB, index) => (
               <div
-                className="col"
-                style={{ paddingRight: 10, paddingLeft: 10 }}
+                className="shortcut-item"
+                style={{
+                  paddingRight: 10,
+                  paddingLeft: 10,
+                }}
                 key={shortcutB._id}
               >
                 <img
@@ -364,15 +373,7 @@ const Homepage = () => {
                       alt="Hình ảnh tin tức du học"
                     />
                     {/* <Link to="/news"> */}
-                    <Link
-                      to="/thong-tin-du-hoc"
-                      className="news-title"
-                      style={{
-                        marginBottom: 10,
-                        marginTop: 20,
-                        color: "black",
-                      }}
-                    >
+                    <Link to={`/${newsB.metaUrl}`} className="news-title">
                       {newsB.title}
                     </Link>
                     {/* </Link> */}
@@ -414,10 +415,10 @@ const Homepage = () => {
                 Tin tức hot nhất
               </h5>
 
-              <div className="row w-100">
+              <div className=" w-100 hot-news">
                 {hotNews.map((newsB, index) => (
                   <div
-                    className="row d-flex align-items-center justify-content-center"
+                    className="detail-hot-news"
                     // style={{ marginBottom: 10 }}
                     key={newsB._id}
                   >
@@ -484,7 +485,10 @@ const Homepage = () => {
               </div>
             </div>
 
-            <div className="container col-md-4">
+            <div
+              className="container col-md-4 FB-Fanpage"
+              style={{ marginTop: 40 }}
+            >
               <h5
                 className="align-items-center"
                 style={{
@@ -495,10 +499,10 @@ const Homepage = () => {
                 Facebook fanpage
               </h5>
 
-              <div className="row w-100">
+              <div className="row ">
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDuHocMKGROUP&tabs=timeline&width=350&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=810266060395549"
-                  width="350"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FDuHocMKGROUP&tabs=timeline&width=420&height=300&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=810266060395549"
+                  width="420"
                   height="300"
                   style={{ border: "none", overflow: "hidden" }}
                   scrolling="no"
@@ -522,7 +526,7 @@ const Homepage = () => {
                 Văn Hoá <span style={{ color: "#2f9931" }}>Các Nước</span>
               </h3>
 
-              <div className="row w-100 d-flex align-items-center">
+              <div className="row d-flex align-items-center">
                 {newsCulture.map((newsB) => (
                   <div
                     className="col-lg-4"
@@ -535,11 +539,7 @@ const Homepage = () => {
                       effect="blur"
                       alt="Hình ảnh văn hoá các nước"
                     />
-                    <Link
-                      to="/culture"
-                      className="news-title"
-                      style={{ marginBottom: 10, color: "black" }}
-                    >
+                    <Link to="/van-hoa-cac-nuoc" className="news-title">
                       {newsB.title}
                     </Link>
                     <p
