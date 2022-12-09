@@ -7,7 +7,6 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 
 import WSPGallery from "../components/Gallery";
-import { callbackify } from "util";
 
 const slides = [
   {
