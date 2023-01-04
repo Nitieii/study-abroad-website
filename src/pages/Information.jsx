@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
-import { vi } from "date-fns/locale";
+import { id, vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
+import usePost from "../hooks/usePost";
 
 const tabs = [
   {
@@ -93,10 +94,14 @@ const Information = () => {
   const [news, setNews] = useState([]);
    const { handleGetPathName } = usePathName();
 
+   const { handleGetPost } = usePost()
+   const { page, cat ,type } = useParams()
+
   useEffect(() => {
     setNews(newsContent);
     setLoading(false);
-  }, []);
+    handleGetPost(page, cat ,type)
+  }, [page, cat ,type]);
 
   return (
     <main id="main" data-aos="fade-up">
