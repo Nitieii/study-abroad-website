@@ -1,12 +1,14 @@
 const GET_API = (id,  page  =  1, type) => {
     return {
-
+      userById: `/user/${id}`,
     }
   }
   
   const POST_API = id => {
     return {
-
+      createUserAccount: `/user`,
+      createPost: "/post",
+      login: "/login",
     }
   }
   

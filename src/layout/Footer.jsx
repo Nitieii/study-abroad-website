@@ -28,24 +28,24 @@ export default function Footer() {
               <h4>Đường Dẫn</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Trang chủ</Link>
+                  <i className="bx bx-chevron-right" ></i>{" "}
+                  <Link to="/">Trang chủ</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Thông tin du học</Link>
+                  <Link to="/thong-tin-du-hoc">Thông tin du học</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Tin tức</Link>
+                  <Link to="/tin-tuc">Tin tức</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Góc du học sinh</Link>
+                  <Link to="/goc-du-hoc-sinh">Góc du học sinh</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Văn hoá các nước</Link>
+                  <Link to="/van-hoa-cac-nuoc">Văn hoá các nước</Link>
                 </li>
               </ul>
             </div>

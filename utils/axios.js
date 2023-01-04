@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const ENDPOINT = 'https://d9br4l58fpq2r.cloudfront.net/api'
+const ENDPOINT = 'https://blog-websit-api.onrender.com/api'
 // const ENDPOINT = 'http://localhost:8080/api'
 
 const axiosInstance = axios.create({
