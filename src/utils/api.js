@@ -1,7 +1,8 @@
-const GET_API = (id,  page  =  1, type) => {
+const GET_API = ({id,  page,cat, type}) => {
     return {
       userById: `/user/${id}`,
-    }
+      getPost: `/posts?page=${page}&category=${cat}&type=${type}`,
+    };
   }
   
   const POST_API = id => {

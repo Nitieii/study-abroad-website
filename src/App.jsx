@@ -31,6 +31,7 @@ function App() {
           <Route path="goc-du-hoc-sinh" element={<Students />} />
           <Route path="van-hoa-cac-nuoc" element={<Culture />} />
           <Route path="lien-he" element={<Contact />} />
+          <Route path="thong-tin-du-hoc/:id" element={<NewsDetail/>}/>
         </Routes>
 
         <Footer />

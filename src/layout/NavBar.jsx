@@ -7,7 +7,7 @@ import usePathName from '../hooks/usePathName'
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
   // const [pathName, setPathName] = useState(window.location.pathname);
-  const {handleGetPathName,pathName} = usePathName()
+  const {handleGetPathName,pathName,handleGetSearchResult,searchResult} = usePathName()
   const [showSearch, setShowSearch] = useState(false);
 
   let menuRef = useRef();
@@ -62,6 +62,7 @@ export default function NavBar() {
       }
     });
   }, [pathName]);
+  console.log(searchResult)
 
   return (
     <>
@@ -262,6 +263,10 @@ export default function NavBar() {
                           type="text"
                           className="input"
                           placeholder="Nhập từ khóa tìm kiếm"
+                          onChange={e => {
+                            handleGetSearchResult(e.target.value)
+                          }}
+                          value={searchResult}
                         />
                         <span className="highlight"></span>
                         <span className="bar"></span>

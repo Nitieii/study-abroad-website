@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import pathNameReducer from './pathNameSlice'
-import StudyAbroadSlice from './StudyAbroadSlice'
+import postReducer from './postSlice'
 
 
 const rootReducer = {
  pathName: pathNameReducer,
- StudyAbroad: StudyAbroadSlice,
+ post: postReducer
 }
 
 export default configureStore({

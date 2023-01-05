@@ -7,27 +7,33 @@ import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
 import usePost from "../hooks/usePost";
+import "../assets/css/Information.css";
 
 const tabs = [
   {
     index: 0,
     title: "Du học Hàn Quốc",
+    type: "du-hoc-han-quoc",
   },
   {
     index: 1,
     title: "Du học Đài Loan",
+    type: "du-hoc-dai-loan",
   },
   {
     index: 2,
     title: "Du học Trung Quốc",
+    type: "du-hoc-trung-quoc",
   },
   {
     index: 3,
     title: "Du học Đức",
+    type: "du-hoc-duc",
   },
   {
     index: 4,
     title: "Du học Úc",
+    type: "du-hoc-uc",
   },
 ];
 
@@ -92,16 +98,16 @@ const Information = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
-   const { handleGetPathName } = usePathName();
+  const { handleGetPathName } = usePathName();
+  const [currentPage, setCurrentPage] = useState(1);
 
-   const { handleGetPost } = usePost()
-   const { page, cat ,type } = useParams()
-
+  const { handleGetPost, post, handleChangeSetType, type } = usePost();
+  const cat = "thong-tin-du-hoc";
+  // const type = 'du-hoc-han-quoc'
+  console.log(post);
   useEffect(() => {
-    setNews(newsContent);
-    setLoading(false);
-    handleGetPost(page, cat ,type)
-  }, [page, cat ,type]);
+    handleGetPost(currentPage, cat, type);
+  }, [currentPage, type]);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -172,12 +178,14 @@ const Information = () => {
                 {tabs &&
                   tabs.map((tab, index) => {
                     if (index === selectedIndex) {
+                      handleChangeSetType(tab.type);
+
                       return (
                         <TabPanel key={index}>
-                          {news.map((item, index) => {
+                          {post.map((item, index) => {
                             return (
                               <div
-                                key={index}
+                                key={item?._id}
                                 className="row"
                                 style={{
                                   borderBottom: "1px solid #e6e6e6",
@@ -187,7 +195,7 @@ const Information = () => {
                               >
                                 <div className="col-md-4">
                                   <img
-                                    src={item.thumbnail}
+                                    src={item?.thumbnail_url}
                                     alt=""
                                     style={{
                                       width: "100%",
@@ -206,8 +214,9 @@ const Information = () => {
                                       color: "black",
                                       fontWeight: 600,
                                     }}
+                                    to={`/thong-tin-du-hoc/${item?._id}`}
                                   >
-                                    {item.title}
+                                    {item?.title}
                                   </Link>
 
                                   <p
@@ -234,12 +243,13 @@ const Information = () => {
                                       MK Group
                                     </span>
                                   </p>
-                                  <p
+                                  <div
+                                    className="line-clamp"
                                     style={{ fontSize: "14px" }}
                                     dangerouslySetInnerHTML={{
-                                      __html: item.content,
+                                      __html: item.description,
                                     }}
-                                  ></p>
+                                  ></div>
                                 </div>
                               </div>
                             );
@@ -277,6 +287,7 @@ const Information = () => {
                       paddingLeft: 30,
                       paddingRight: 30,
                     }}
+                    onClick={() => setCurrentPage(currentPage + 1)}
                   >
                     Xem Thêm
                   </button>

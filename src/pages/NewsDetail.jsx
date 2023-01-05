@@ -5,8 +5,9 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import HotNews from "../components/HotNews";
-import '../assets/css/NewsDetail.css'
-import { usePathName } from "../hooks";
+import "../assets/css/NewsDetail.css";
+import { usePathName, usePost } from "../hooks";
+import { useParams } from "react-router-dom";
 
 const tabs = [
   {
@@ -83,8 +84,11 @@ const newsContent = {
 const NewsDetail = () => {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
-   const { handleGetPathName } = usePathName();
+  const { handleGetPathName } = usePathName();
+  const { post } = usePost();
   const inputRef = useRef(null);
+  const { id } = useParams();
+  const currentPost = post.find((item) => item._id === id);
 
   useEffect(() => {
     setNews(newsContent);
@@ -118,7 +122,7 @@ const NewsDetail = () => {
                   Tin Tức
                 </Link>
               </li>
-              <li>{newsContent.title}</li>
+              <li>{currentPost.title}</li>
             </ol>
           </div>
         </div>
@@ -133,7 +137,7 @@ const NewsDetail = () => {
             >
               <p
                 style={{ fontSize: "14px" }}
-                dangerouslySetInnerHTML={{ __html: newsContent.content }}
+                dangerouslySetInnerHTML={{ __html: currentPost.description }}
               ></p>
             </div>
 
