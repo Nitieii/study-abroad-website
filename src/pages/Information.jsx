@@ -7,7 +7,7 @@ import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
 import usePost from "../hooks/usePost";
-import "../assets/css/Information.css";
+import "../assets/css/lineClamp.css";
 
 const tabs = [
   {
@@ -104,7 +104,6 @@ const Information = () => {
   const { handleGetPost, post, handleChangeSetType, type } = usePost();
   const cat = "thong-tin-du-hoc";
   // const type = 'du-hoc-han-quoc'
-  console.log(post);
   useEffect(() => {
     handleGetPost(currentPage, cat, type);
   }, [currentPage, type]);

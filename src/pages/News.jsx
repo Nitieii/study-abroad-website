@@ -5,7 +5,8 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
-import { usePathName } from "../hooks";
+import { usePathName,usePost } from "../hooks";
+import "../assets/css/lineClamp.css";
 
 const tabs = [
   {
@@ -91,12 +92,16 @@ const News = () => {
   const [news, setNews] = useState([]);
   const {handleGetPathName} =usePathName()
   const inputRef = useRef(null);
+  const {post,handleGetNews} = usePost()
+  const cat = "tin-tuc"
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setNews(newsContent);
     setLoading(false);
-  }, []);
-
+    handleGetNews(currentPage,cat)
+  }, [currentPage]);
+console.log(post)
   return (
     <main id="main" data-aos="fade-up">
       <section className="breadcrumbs">
@@ -123,7 +128,7 @@ const News = () => {
             mình.
           </p>
 
-          {news.map((item, index) => {
+          {post.map((item, index) => {
             return (
               <div
                 key={index}
@@ -137,7 +142,7 @@ const News = () => {
               >
                 <div className="col-md-4">
                   <img
-                    src={item.thumbnail}
+                    src={item.thumbnail_url}
                     alt=""
                     style={{
                       width: "100%",
@@ -148,7 +153,7 @@ const News = () => {
                 </div>
                 <div className="col-md-8">
                   <Link
-                    to={`/${item.metaUrl}`}
+                    to={`/thong-tin-du-hoc/${item?._id}`}
                     className="news-title"
                     style={{
                       marginBottom: 5,
@@ -177,10 +182,11 @@ const News = () => {
                       MK Group
                     </span>
                   </p>
-                  <p
+                  <div
+                    className="line-clamp"
                     style={{ fontSize: "14px" }}
-                    dangerouslySetInnerHTML={{ __html: item.content }}
-                  ></p>
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></div>
                 </div>
               </div>
             );
