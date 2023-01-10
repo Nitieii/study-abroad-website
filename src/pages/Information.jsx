@@ -95,17 +95,17 @@ const newsContent = [
 ];
 
 const Information = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+ 
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const { handleGetPathName } = usePathName();
   const [currentPage, setCurrentPage] = useState(1);
-
-  const { handleGetPost, post, handleChangeSetType, type } = usePost();
+  const { handleGetPost, post, handleChangeSetType, type,selectedIndex ,handleSetSelectedIndex} = usePost();
   const cat = "thong-tin-du-hoc";
-  // const type = 'du-hoc-han-quoc'
+  
   useEffect(() => {
     handleGetPost(currentPage, cat, type);
+ 
   }, [currentPage, type]);
 
   return (
@@ -142,8 +142,10 @@ const Information = () => {
           <div className="row">
             <div className="col-lg-8">
               <Tabs
+                // selectedIndex={selectedIndex}
+                // onSelect={(tabIndex) => setSelectedIndex(tabIndex)}
                 selectedIndex={selectedIndex}
-                onSelect={(tabIndex) => setSelectedIndex(tabIndex)}
+                onSelect={(tabIndex) => handleSetSelectedIndex(tabIndex)}
               >
                 <TabList>
                   {tabs.map((tab) => (

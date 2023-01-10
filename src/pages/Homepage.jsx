@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ import { vi } from "date-fns/locale";
 import Fanpage from "../components/Fanpage";
 import WSPGallery from "../components/Gallery";
 import HotNews from "../components/HotNews";
+import { usePost } from "../hooks";
+import emailjs from "@emailjs/browser";
 
 const slides = [
   {
@@ -69,6 +71,8 @@ const shortcut = [
       "Các chương trình du học Hàn Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng",
     thumbnail:
       "https://images.unsplash.com/photo-1578648574417-15941a4751bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    type: "du-hoc-han-quoc",
+    index: 0,
   },
   {
     _id: 2,
@@ -77,6 +81,8 @@ const shortcut = [
       "Các chương trình du học Đài Loan: Du học nghề + Học tiếng ngắn hạn + Học bổng",
     thumbnail:
       "https://images.unsplash.com/photo-1539469520861-6ece02538a10?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    type: "du-hoc-dai-loan",
+    index: 1,
   },
   {
     _id: 3,
@@ -85,6 +91,8 @@ const shortcut = [
       "Các chương trình du học Trung Quốc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
     thumbnail:
       "https://images.unsplash.com/photo-1533552755457-5b471cb2ab11?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    type: "du-hoc-trung-quoc",
+    index: 2,
   },
   {
     _id: 4,
@@ -93,6 +101,8 @@ const shortcut = [
       "Các chương trình du học Đức: Du học nghề + Học tiếng ngắn hạn + Học bổng ",
     thumbnail:
       "https://images.unsplash.com/photo-1648467884947-e636d39b5504?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    type: "du-hoc-duc",
+    index: 3,
   },
   {
     _id: 5,
@@ -101,6 +111,8 @@ const shortcut = [
       "Các chương trình du học Úc: Du học nghề + Học tiếng ngắn hạn + Học bổng  ",
     thumbnail:
       "https://images.unsplash.com/photo-1580417992497-a0c602adde05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    type: "du-hoc-uc",
+    index: 4
   },
 ];
 
@@ -219,10 +231,33 @@ const testimonials = [
 
 const Homepage = () => {
   const [shortcuts, setShortCuts] = useState([]);
+  const {handleSetSelectedIndex} = usePost()
+  const form = useRef()
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_h229yt4",
+        "template_r90zafv",
+        form.current,
+        "fjpC-B_Bu53YcXJPO"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+      e.target.reset()
+  };
 
   useEffect(() => {
     setShortCuts(shortcut);
-  });
+  },[]);
 
   return (
     <div>
@@ -289,7 +324,7 @@ const Homepage = () => {
                   effect="blur"
                   alt="Hình ảnh du học"
                 />
-                <Link to="/thong-tin-du-hoc" className="shortcut-title">
+                <Link to="/thong-tin-du-hoc" className="shortcut-title" onClick={() => handleSetSelectedIndex(shortcutB.index)}>
                   {shortcutB.title}
                 </Link>
                 <p className="shortcut-content">{shortcutB.content}</p>
@@ -723,6 +758,8 @@ const Homepage = () => {
                 method="post"
                 role="form"
                 className="php-email-form"
+                ref={form}
+                onSubmit={sendEmail}
               >
                 <div className="row">
                   <div className="col form-group">

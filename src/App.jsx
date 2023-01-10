@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Information from "./pages/Information";
 import NewsDetail from "./pages/NewsDetail";
+import SearchResult from "./pages/SearchResult";
+
 
 function App() {
   useEffect(() => {
@@ -27,7 +29,7 @@ function App() {
           <Route path="/thong-tin-du-hoc" element={<Information />} />
           <Route path="/tin-tuc" element={<News />} />
           <Route path="/:meta" element={<NewsDetail />} />
-
+          <Route path="/ket-qua" element={<SearchResult/>}/>
           <Route path="goc-du-hoc-sinh" element={<Students />} />
           <Route path="van-hoa-cac-nuoc" element={<Culture />} />
           <Route path="lien-he" element={<Contact />} />

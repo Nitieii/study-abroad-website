@@ -1,6 +1,12 @@
-import React from "react";
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import { vi } from "date-fns/locale";
+import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
-import { usePathName } from "../hooks";
+import { usePathName, usePost } from "../hooks";
+import "../assets/css/lineClamp.css";
 
 const newsContent = [
   {
@@ -68,11 +74,22 @@ const newsContent = [
 function SearchResult() {
   const [news, setNews] = useState([]);
   const { handleGetPathName,searchResult } = usePathName();
-
+  const {post,handleGetAllPost,handleGetPost} = usePost()
+  const [currentPage, setCurrentPage] = useState(1);
+console.log(post)
+  const result = post.filter((item) =>
+    item.title.toLowerCase().includes(searchResult.toLowerCase())
+  );
+  // const result = post.find((item) => item.title === "ff"
+   
+  // );
+console.log(result)
   useEffect(() => {
     setNews(newsContent);
-    setLoading(false);
-  }, []);
+   
+    // handleGetPost(currentPage,"thong-tin-du-hoc","du-hoc-han-quoc")
+    handleGetAllPost(currentPage)
+  }, [currentPage]);
 
   return (
     <main id="main" data-aos="fade-up">

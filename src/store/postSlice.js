@@ -4,7 +4,8 @@ const initialState = {
   isLoading: false,
   post: [],
   totalPage: 1,
-  type: "du-hoc-han-quoc",
+  type: "",
+  selectedIndex:0
 };
 
 const slice = createSlice({
@@ -23,11 +24,14 @@ const slice = createSlice({
     GET_TOTALPAGE: (state, action) => {
       state.totalPage = action.payload;
     },
+    HANDLE_SET_SELECTED_INDEX : ( state,action) => {
+      state.selectedIndex = action.payload
+    }
   },
 });
 
 const { reducer, actions } = slice;
-export const { GET_POST, HANDLE_LOADING, HANDLE_SET_TYPE, GET_TOTALPAGE } =
+export const { GET_POST, HANDLE_LOADING, HANDLE_SET_TYPE, GET_TOTALPAGE ,HANDLE_SET_SELECTED_INDEX} =
   actions;
 
 export default reducer;

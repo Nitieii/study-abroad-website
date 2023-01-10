@@ -1,14 +1,16 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
-import usePathName from '../hooks/usePathName'
+import usePathName from "../hooks/usePathName";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
   // const [pathName, setPathName] = useState(window.location.pathname);
-  const {handleGetPathName,pathName,handleGetSearchResult,searchResult} = usePathName()
+  const { handleGetPathName, pathName, handleGetSearchResult, searchResult } =
+    usePathName();
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
 
   let menuRef = useRef();
   const select = (el, all = false) => {
@@ -32,10 +34,14 @@ export default function NavBar() {
       e.nextElementSibling.classList.toggle("dropdown-active");
     }
   };
-
+console.log(searchResult)
+console.log(showSearch)
   const handleShowSearch = () => {
-    setShowSearch(!showSearch);
-    // select('#navbar').classList.toggle('navbar-select')
+   
+      setShowSearch(true);
+    
+  
+ 
   };
 
   const handleClose = () => {
@@ -50,8 +56,8 @@ export default function NavBar() {
 
   useEffect(() => {
     // setPathName(window.location.pathname);
-    handleGetPathName(window.location.pathname)
-    console.log(pathName)
+    handleGetPathName(window.location.pathname);
+    console.log(pathName);
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
@@ -62,7 +68,7 @@ export default function NavBar() {
       }
     });
   }, [pathName]);
-  console.log(searchResult)
+  console.log(searchResult);
 
   return (
     <>
@@ -134,7 +140,7 @@ export default function NavBar() {
                       to="/thong-tin-du-hoc"
                       onClick={() => {
                         // setPathName("/thong-tin-du-hoc");
-                          handleGetPathName("/thong-tin-du-hoc");
+                        handleGetPathName("/thong-tin-du-hoc");
                         handleCloseNavMobile();
                       }}
                     >
@@ -147,7 +153,7 @@ export default function NavBar() {
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             // setPathName("/thong-tin-du-hoc");
-                              handleGetPathName("/thong-tin-du-hoc");
+                            handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -159,7 +165,7 @@ export default function NavBar() {
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             // setPathName("/thong-tin-du-hoc");
-                              handleGetPathName("/thong-tin-du-hoc");
+                            handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -188,7 +194,7 @@ export default function NavBar() {
                   to="/tin-tuc"
                   onClick={() => {
                     // setPathName("/tin-tuc");
-                     handleGetPathName("/tin-tuc");
+                    handleGetPathName("/tin-tuc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -200,7 +206,7 @@ export default function NavBar() {
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
                     // setPathName("/goc-du-hoc-sinh");
-                      handleGetPathName("/goc-du-hoc-sinh");
+                    handleGetPathName("/goc-du-hoc-sinh");
                     handleCloseNavMobile();
                   }}
                 >
@@ -231,7 +237,7 @@ export default function NavBar() {
                   to="/van-hoa-cac-nuoc"
                   onClick={() => {
                     // setPathName("/van-hoa-cac-nuoc");
-                      handleGetPathName("/van-hoa-cac-nuoc");
+                    handleGetPathName("/van-hoa-cac-nuoc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -244,7 +250,7 @@ export default function NavBar() {
                   to="/lien-he"
                   onClick={() => {
                     // setPathName("/lien-he");
-                     handleGetPathName("/lien-he");
+                    handleGetPathName("/lien-he");
                     handleCloseNavMobile();
                   }}
                 >
@@ -253,8 +259,8 @@ export default function NavBar() {
               </li>
 
               <li>
-                <Link style={{ fontSize: "24px" }}>
-                  <MdSearch onClick={handleShowSearch} />
+                <Link style={{ fontSize: "24px" }} onClick={handleShowSearch} to={searchResult ? "/ket-qua" : null}>
+                  <MdSearch />
                   {showSearch && (
                     <CheckOutSideClick onClickOutSide={handleClose}>
                       <div className="group">
@@ -263,8 +269,8 @@ export default function NavBar() {
                           type="text"
                           className="input"
                           placeholder="Nhập từ khóa tìm kiếm"
-                          onChange={e => {
-                            handleGetSearchResult(e.target.value)
+                          onChange={(e) => {
+                            handleGetSearchResult(e.target.value);
                           }}
                           value={searchResult}
                         />
