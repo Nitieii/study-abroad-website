@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import useCulture from "../hooks/useCulture";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
@@ -90,13 +91,16 @@ const newsContent = [
 const Culture = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [news, setNews] = useState([]);
-   const { handleGetPathName } = usePathName();
-
+  // const [news, setNews] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { culture, handleDeletePost, handleGetPost, totalPage } = useCulture()
+  const { handleGetPathName } = usePathName();
+  const cat = "van-hoa-cac-nuoc";
   useEffect(() => {
-    setNews(newsContent);
+    handleGetNews(currentPage, cat);
+    // setNews(newsContent);
     setLoading(false);
-  }, []);
+  }, [currentPage]);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -169,7 +173,7 @@ const Culture = () => {
                     if (index === selectedIndex) {
                       return (
                         <TabPanel key={index}>
-                          {news.map((item, index) => {
+                          {culture.map((item, index) => {
                             return (
                               <div
                                 key={index}

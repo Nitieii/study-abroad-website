@@ -91,8 +91,10 @@ const News = () => {
   const [news, setNews] = useState([]);
   const {handleGetPathName} =usePathName()
   const inputRef = useRef(null);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const cat = "tin-tuc"
   useEffect(() => {
+    handleGetNews(currentPage, cat);
     setNews(newsContent);
     setLoading(false);
   }, []);

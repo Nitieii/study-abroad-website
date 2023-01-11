@@ -6,6 +6,7 @@ import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
+import usePost from "../hooks/usePost";
 
 const tabs = [
   {
@@ -90,13 +91,23 @@ const newsContent = [
 const Information = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [news, setNews] = useState([]);
-   const { handleGetPathName } = usePathName();
-
+  // const [news, setNews] = useState([]);
+  const { handleGetPathName } = usePathName();
+  const [currentPage, setCurrentPage] = useState(1);
+  const {
+    post,
+    handleGetPost,
+    type,
+    handleChangeSetType,
+    totalPage,
+  } = usePost();
+  // const inforpost = post.filter((item) => item._id);
+  const cat = "thong-tin-du-hoc";
   useEffect(() => {
-    setNews(newsContent);
+    handleGetPost(currentPage, cat, type);
+    // setNews(newsContent);
     setLoading(false);
-  }, []);
+  }, [currentPage, type]);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -169,7 +180,7 @@ const Information = () => {
                     if (index === selectedIndex) {
                       return (
                         <TabPanel key={index}>
-                          {news.map((item, index) => {
+                          {post.map((item, index) => {
                             return (
                               <div
                                 key={index}

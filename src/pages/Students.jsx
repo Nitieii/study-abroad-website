@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
+import useUploader from "../hooks/useUploader";
 
 const items = [
   {
@@ -68,9 +69,12 @@ const Students = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const [images, setImages] = useState([]);
-   const { handleGetPathName } = usePathName();
+  const { handleGetPathName } = usePathName();
+  const { isLoading, file, handleUploadImg, handleGetImage, handleDeleteImage, handleLoadIMG } = useUploader()
+  const [cat, setCat] = useState("du-hoc-han-quoc")
 
   useEffect(() => {
+    handleGetImage("du-hoc-han-quoc")
     setImages(items);
     setLoading(false);
   }, []);
