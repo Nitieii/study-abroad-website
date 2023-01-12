@@ -60,7 +60,7 @@ const WSPGallery = ({ galleryImages }) => {
             onClick={nextSlide}
           />
           <div className="fullScreenImage">
-            <img src={galleryImages[slideNumber].img} alt="" />
+            <img src={galleryImages[slideNumber].url} alt="" />
           </div>
         </div>
       )}
@@ -74,7 +74,7 @@ const WSPGallery = ({ galleryImages }) => {
                 key={index}
                 onClick={() => handleOpenModal(index)}
               >
-                <img src={slide.img} alt="" />
+                <img src={slide.url} alt="" />
               </div>
             );
           })}

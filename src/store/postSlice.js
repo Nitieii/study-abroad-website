@@ -6,9 +6,8 @@ const initialState = {
   culture: [],
   totalPage: 1,
   type: "",
-  selectedIndex:0
+  selectedIndex: 0,
 };
-
 const slice = createSlice({
   name: "post",
   name: "culture",
@@ -29,14 +28,21 @@ const slice = createSlice({
     GET_TOTALPAGE: (state, action) => {
       state.totalPage = action.payload;
     },
-    HANDLE_SET_SELECTED_INDEX : ( state,action) => {
-      state.selectedIndex = action.payload
-    }
+    HANDLE_SET_SELECTED_INDEX: (state, action) => {
+      state.selectedIndex = action.payload;
+    },
+    
   },
 });
 
 const { reducer, actions } = slice;
-export const { GET_POST, HANDLE_LOADING, GET_CULTURE, HANDLE_SET_TYPE, GET_TOTALPAGE ,HANDLE_SET_SELECTED_INDEX} =
-  actions;
+export const {
+  GET_POST,
+  HANDLE_LOADING,
+  GET_CULTURE,
+  HANDLE_SET_TYPE,
+  GET_TOTALPAGE,
+  HANDLE_SET_SELECTED_INDEX,
+} = actions;
 
 export default reducer;

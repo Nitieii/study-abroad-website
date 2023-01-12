@@ -1,10 +1,12 @@
-const GET_API = ({id,  page,cat, type}) => {
+const GET_API = ({id,  page,cat, type,keyword}) => {
     return {
       userById: `/user/${id}`,
       getPost: `/posts?page=${page}&category=${cat}&type=${type}`,
       getNews: `/posts?page=${page}&category=${cat}`,
       getAllPost: `/posts`,
       getCulture: `/posts?page=${page}&category=${cat}&type=${type}`,
+      getSearchResult: `/posts/search?keyword=${keyword}&page=1`,
+      getImage:`/images?category=${cat}`
     };
   }
   

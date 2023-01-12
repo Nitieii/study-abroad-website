@@ -5,6 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName } from "../hooks";
+import useImage from "../hooks/useImage";
 
 const items = [
   {
@@ -66,13 +67,11 @@ const tabs = [
 
 const Students = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [images, setImages] = useState([]);
-   const { handleGetPathName } = usePathName();
+  const { handleGetPathName } = usePathName();
+  const { isLoading, img, handleGetIMG } = useImage();
 
   useEffect(() => {
-    setImages(items);
-    setLoading(false);
+    handleGetIMG("du-hoc-han-quoc")
   }, []);
 
   return (
@@ -146,7 +145,7 @@ const Students = () => {
                     if (index === selectedIndex) {
                       return (
                         <TabPanel key={index}>
-                          <WSPGallery galleryImages={images} />
+                          <WSPGallery galleryImages={img} />
                         </TabPanel>
                       );
                     }

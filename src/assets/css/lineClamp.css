@@ -6,4 +6,8 @@
   -webkit-box-orient: vertical;
   word-wrap: break-word;
   font-size: 14px;
+  
+}
+.line-clamp img{
+  display: none;
 }

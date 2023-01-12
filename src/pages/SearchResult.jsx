@@ -8,6 +8,7 @@ import Fanpage from "../components/Fanpage";
 import { usePathName, usePost } from "../hooks";
 import "../assets/css/lineClamp.css";
 
+
 const newsContent = [
   {
     _id: 1,
@@ -74,21 +75,22 @@ const newsContent = [
 function SearchResult() {
   const [news, setNews] = useState([]);
   const { handleGetPathName,searchResult } = usePathName();
-  const {post,handleGetAllPost,handleGetPost} = usePost()
+  const {post,handleGetSearchResult} = usePost()
   const [currentPage, setCurrentPage] = useState(1);
-console.log(post)
-  const result = post.filter((item) =>
-    item.title.toLowerCase().includes(searchResult.toLowerCase())
-  );
+  const result = post.length
+
+  // const result = post.filter((item) =>
+  //   item.title.toLowerCase().includes(searchResult.toLowerCase())
+  // );
   // const result = post.find((item) => item.title === "ff"
    
   // );
 console.log(result)
   useEffect(() => {
-    setNews(newsContent);
+    setNews(news);
    
-    // handleGetPost(currentPage,"thong-tin-du-hoc","du-hoc-han-quoc")
-    handleGetAllPost(currentPage)
+    // handleGetSearchResult(searchResult)
+   
   }, [currentPage]);
 
   return (
@@ -96,7 +98,7 @@ console.log(result)
       <section className="breadcrumbs">
         <div className="container">
           <div className="d-flex justify-content-between align-items-center">
-            <h2 style={{ fontWeight: "bold" }}>Kết quả</h2>
+            <h2 style={{ fontWeight: "bold" }}>Kết quả tìm kiếm</h2>
             <ol>
               <li>
                 <Link
@@ -108,7 +110,7 @@ console.log(result)
                   Trang Chủ
                 </Link>
               </li>
-              <li>Tin Tức</li>
+              <li>Kết quả</li>
             </ol>
           </div>
         </div>
@@ -117,10 +119,10 @@ console.log(result)
       <section className="inner-page">
         <div className="container">
           <p style={{ marginBottom: 30, marginTop: 30 }}>
-            Tìm thấy 3 kết quả cho từ khóa "A"
+            Tìm thấy {post.length} kết quả cho từ khóa "{searchResult}"
           </p>
 
-          {news.map((item, index) => {
+          {post.map((item, index) => {
             return (
               <div
                 key={index}
@@ -134,7 +136,7 @@ console.log(result)
               >
                 <div className="col-md-4">
                   <img
-                    src={item.thumbnail}
+                    src={item.thumbnail_url}
                     alt=""
                     style={{
                       width: "100%",
@@ -174,10 +176,11 @@ console.log(result)
                       MK Group
                     </span>
                   </p>
-                  <p
+                  <div
+                    className="line-clamp"
                     style={{ fontSize: "14px" }}
-                    dangerouslySetInnerHTML={{ __html: item.content }}
-                  ></p>
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></div>
                 </div>
               </div>
             );

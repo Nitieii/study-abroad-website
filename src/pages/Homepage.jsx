@@ -1,4 +1,4 @@
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -9,8 +9,11 @@ import { vi } from "date-fns/locale";
 import Fanpage from "../components/Fanpage";
 import WSPGallery from "../components/Gallery";
 import HotNews from "../components/HotNews";
-import { usePost } from "../hooks";
+import { usePost, useAlert } from "../hooks";
 import emailjs from "@emailjs/browser";
+import useImg from "../hooks/useImage";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const slides = [
   {
@@ -27,39 +30,6 @@ const slides = [
     src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero1.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
-  },
-];
-
-const news = [
-  {
-    _id: 1,
-    title: "Tuyển sinh du học Hàn Quốc",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
-    thumbnail:
-      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320398641_21cded1bb15a2dfae7684a8c05e09e66.jpg",
-  },
-  {
-    _id: 2,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
-    thumbnail:
-      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937320629262_7729baaac253c1a7d80a6415106e032e.jpg",
-  },
-  {
-    _id: 3,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    metaUrl: "tuyen-sinh-du-hoc-han-quoc-2022",
-    thumbnail:
-      "https://todo-list-app-asdfasd.s3.amazonaws.com/z3937322559207_a7104d74b5e2a6b32550656baecdb139.jpg",
   },
 ];
 
@@ -112,82 +82,7 @@ const shortcut = [
     thumbnail:
       "https://images.unsplash.com/photo-1580417992497-a0c602adde05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
     type: "du-hoc-uc",
-    index: 4
-  },
-];
-
-
-
-const newsCulture = [
-  {
-    _id: 1,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    thumbnail:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1b/ef/68/caption.jpg?w=1100&h=-1&s=1",
-  },
-  {
-    _id: 2,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    thumbnail:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/69/1d/6c/caption.jpg?w=1000&h=-1&s=1",
-  },
-  {
-    _id: 3,
-    title: "Tuyển sinh du học Hàn Quốc 2022",
-    content:
-      "<p>Kỳ tuyển sinh Du học Hàn Quốc kỳ tháng 6 đã chính thức kết thúc, bây giờ là thời điểm tốt nhất để các bạn chuẩn bị hồ sơ cho kỳ tháng 9/2021 và 12/2021 du học Hàn Quốc.</p>",
-    createdAt: "2022-12-06T07:00:00.000Z",
-    thumbnail:
-      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/7e/59/8f/photo0jpg.jpg?w=1100&h=-1&s=1",
-  },
-];
-
-const items = [
-  {
-    _id: 1,
-    img: "https://duhocaddie.com/wp-content/uploads/2019/11/66323330_2377842775571114_8500744317583753216_n.jpg",
-  },
-  {
-    _id: 2,
-    img: "https://havico.edu.vn/wp-content/uploads/2021/08/Du-hoc-han-quoc-1.png",
-  },
-  {
-    _id: 3,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ1b2pqaljJTfEo3t0bj9RMGAErAOPXHs9xg&usqp=CAU",
-  },
-  {
-    _id: 4,
-    img: "https://duhocvietglobal.com/wp-content/uploads/2019/03/quydinh_visaHQ.jpg",
-  },
-  {
-    _id: 6,
-    img: "https://vcdn1-vnexpress.vnecdn.net/2019/12/14/shutterstock-583601698-1576341-1633-5877-1576341968.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=3rCx3Y_inqV2AEm_DAR5Qw",
-  },
-  {
-    _id: 7,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUTyfva_bD7HBix_a8ce2EsaeoblMz3vh6gA&usqp=CAU",
-  },
-  {
-    _id: 8,
-    img: "https://duhoc.thanhgiang.com.vn/sites/default/files/kho-khan-khi-du-hoc-han-quoc.jpg",
-  },
-  {
-    _id: 9,
-    img: "https://korea.net.vn/wp-content/uploads/2018/02/du-h%E1%BB%8Dc-sinh-hàn-quốc-e1589186665505.jpg",
-  },
-  {
-    _id: 9,
-    img: "https://korea.net.vn/wp-content/uploads/2018/02/du-h%E1%BB%8Dc-sinh-hàn-quốc-e1589186665505.jpg",
-  },
-  {
-    _id: 9,
-    img: "https://korea.net.vn/wp-content/uploads/2018/02/du-h%E1%BB%8Dc-sinh-hàn-quốc-e1589186665505.jpg",
+    index: 4,
   },
 ];
 
@@ -231,10 +126,18 @@ const testimonials = [
 
 const Homepage = () => {
   const [shortcuts, setShortCuts] = useState([]);
-  const {post, type, handleGetPost, culture, handleGetCulture ,handleSetSelectedIndex} = usePost();
+  const {
+    post,
+    type,
+    handleGetPost,
+    culture,
+    handleGetCulture,
+    handleSetSelectedIndex,
+  } = usePost();
   const [currentPage, setCurrentPage] = useState(1);
+  const { enqueueSnackbar } = useAlert();
   const form = useRef();
-
+   const notify = () => toast("Wow so easy !");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -254,17 +157,32 @@ const Homepage = () => {
           console.log(error.text);
         }
       );
-      e.target.reset()
+    // enqueueSnackbar("thành công", {
+    //   variant: "success",
+    // });
+    toast.success("Gửi email thành công")
+    e.target.reset();
   };
 
+  const { img, handleGetIMG } = useImg();
   useEffect(() => {
-    handleGetPost(currentPage, 'thong-tin-du-hoc', type);
-    handleGetCulture(currentPage, 'van-hoa-cac-nuoc', type)
+    handleGetPost(currentPage, "thong-tin-du-hoc", type);
+    handleGetCulture(currentPage, "van-hoa-cac-nuoc", type);
     setShortCuts(shortcut);
-  },[currentPage,type]);
-console.log(culture)
+    handleGetIMG("du-hoc-han-quoc");
+  }, [currentPage, type]);
+
+  const arrayPost = [...post]
+  arrayPost.length = 3
+
+  const arrayCulture = [...culture]
+  arrayCulture.length = [3]
   return (
     <div>
+      <div>
+       
+        <ToastContainer />
+      </div>
       <Carousel autoPlay autoFocus infiniteLoop showThumbs={false}>
         {slides.map((slide, index) => (
           <section
@@ -328,7 +246,11 @@ console.log(culture)
                   effect="blur"
                   alt="Hình ảnh du học"
                 />
-                <Link to="/thong-tin-du-hoc" className="shortcut-title" onClick={() => handleSetSelectedIndex(shortcutB.index)}>
+                <Link
+                  to="/thong-tin-du-hoc"
+                  className="shortcut-title"
+                  onClick={() => handleSetSelectedIndex(shortcutB.index)}
+                >
                   {shortcutB.title}
                 </Link>
                 <p className="shortcut-content">{shortcutB.content}</p>
@@ -344,20 +266,20 @@ console.log(culture)
             <div className="container col-md-8">
               <div className="section-title">
                 <Link to="/thong-tin-du-hoc">
-                <h3
-                  style={{
-                    fontWeight: "bold",
-                    textAlign: "start",
-                    color: "black",
-                  }}
-                >
-                  Thông Tin <span style={{ color: "#2f9931" }}>Du Học</span>
-                </h3>
+                  <h3
+                    style={{
+                      fontWeight: "bold",
+                      textAlign: "start",
+                      color: "black",
+                    }}
+                  >
+                    Thông Tin <span style={{ color: "#2f9931" }}>Du Học</span>
+                  </h3>
                 </Link>
               </div>
 
               <div className="row d-flex align-items-center TTDH-responsive">
-                {post.map((newsB) => (
+                {arrayPost.map((newsB) => (
                   <div
                     className="col-md-4"
                     style={{ paddingRight: 10, paddingLeft: 10 }}
@@ -370,7 +292,10 @@ console.log(culture)
                       alt="Hình ảnh tin tức du học"
                     />
                     {/* <Link to="/news"> */}
-                    <Link to={`/thong-tin-du-hoc/${newsB._id}`} className="news-title">
+                    <Link
+                      to={`/thong-tin-du-hoc/${newsB._id}`}
+                      className="news-title"
+                    >
                       {newsB.title}
                     </Link>
                     {/* </Link> */}
@@ -412,7 +337,7 @@ console.log(culture)
                 Tin tức hot nhất
               </h5>
 
-              <HotNews/>
+              <HotNews />
             </div>
           </div>
         </div>
@@ -428,11 +353,11 @@ console.log(culture)
               </h3>
 
               <div className="row w-100">
-                <WSPGallery galleryImages={items} />
+                <WSPGallery galleryImages={img} />
               </div>
             </div>
 
-            <Fanpage/>
+            <Fanpage />
           </div>
         </div>
       </div>
@@ -448,7 +373,7 @@ console.log(culture)
               </h3>
 
               <div className="row d-flex align-items-center">
-                {culture.map((newsB) => (
+                {arrayCulture.map((newsB) => (
                   <div
                     className="col-lg-4"
                     style={{ paddingRight: 10, paddingLeft: 10 }}
@@ -460,7 +385,10 @@ console.log(culture)
                       effect="blur"
                       alt="Hình ảnh văn hoá các nước"
                     />
-                    <Link to={`/van-hoa-cac-nuoc/${newsB._id}`} className="news-title">
+                    <Link
+                      to={`/van-hoa-cac-nuoc/${newsB._id}`}
+                      className="news-title"
+                    >
                       {newsB.title}
                     </Link>
                     <p

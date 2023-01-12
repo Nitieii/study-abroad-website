@@ -10,11 +10,11 @@ function usePathName() {
     dispatch(HANDLE_GET_PATHNAME(path));
   } 
 
-  const handleGetSearchResult = (kw) => {
+  const handleSearch = (kw) => {
     dispatch(HANDLE_GET_SEARCH_RESULT(kw))
   }
 
-  return {handleGetPathName,pathName,handleGetSearchResult,searchResult}
+  return {handleGetPathName,pathName,handleSearch,searchResult}
 }
 
 export default usePathName;

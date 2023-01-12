@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
-import usePathName from "../hooks/usePathName";
+import { usePost,usePathName } from "../hooks";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
-  // const [pathName, setPathName] = useState(window.location.pathname);
-  const { handleGetPathName, pathName, handleGetSearchResult, searchResult } =
+  const {handleGetSearchResult} = usePost()
+  const { handleGetPathName, pathName, handleSearch, searchResult } =
     usePathName();
   const [showSearch, setShowSearch] = useState(false);
   const navigate = useNavigate();
@@ -34,15 +34,19 @@ export default function NavBar() {
       e.nextElementSibling.classList.toggle("dropdown-active");
     }
   };
-console.log(searchResult)
-console.log(showSearch)
+  // console.log(searchResult)
+  // console.log(showSearch)
   const handleShowSearch = () => {
-   
-      setShowSearch(true);
-    
-  
- 
+    setShowSearch(true);
   };
+
+  const handleGetSearch = () => {
+    if(!searchResult){
+      return
+    } else {
+      handleGetSearchResult(searchResult)
+    }
+  }
 
   const handleClose = () => {
     setShowSearch(false);
@@ -57,7 +61,7 @@ console.log(showSearch)
   useEffect(() => {
     // setPathName(window.location.pathname);
     handleGetPathName(window.location.pathname);
-    console.log(pathName);
+    // console.log(pathName);
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
@@ -68,7 +72,7 @@ console.log(showSearch)
       }
     });
   }, [pathName]);
-  console.log(searchResult);
+  // console.log(searchResult);
 
   return (
     <>
@@ -259,7 +263,11 @@ console.log(showSearch)
               </li>
 
               <li>
-                <Link style={{ fontSize: "24px" }} onClick={handleShowSearch} to={searchResult ? "/ket-qua" : null}>
+                <Link
+                  style={{ fontSize: "24px" }}
+                  onClick={handleShowSearch}
+                  // to={searchResult ? "/ket-qua" : null}
+                >
                   <MdSearch />
                   {showSearch && (
                     <CheckOutSideClick onClickOutSide={handleClose}>
@@ -270,10 +278,11 @@ console.log(showSearch)
                           className="input"
                           placeholder="Nhập từ khóa tìm kiếm"
                           onChange={(e) => {
-                            handleGetSearchResult(e.target.value);
+                            handleSearch(e.target.value);
                           }}
                           value={searchResult}
                         />
+                        <MdSearch className="navbar-searchIcon" onClick={() => handleGetSearch()}/>
                         <span className="highlight"></span>
                         <span className="bar"></span>
                       </div>
