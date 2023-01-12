@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   post: [],
+  culture: [],
   totalPage: 1,
   type: "",
   selectedIndex:0
@@ -10,6 +11,7 @@ const initialState = {
 
 const slice = createSlice({
   name: "post",
+  name: "culture",
   initialState,
   reducers: {
     HANDLE_LOADING: (state, action) => {
@@ -17,6 +19,9 @@ const slice = createSlice({
     },
     GET_POST: (state, action) => {
       state.post = action.payload;
+    },
+    GET_CULTURE: (state, action) => {
+      state.culture = action.payload;
     },
     HANDLE_SET_TYPE: (state, action) => {
       state.type = action.payload;
@@ -31,7 +36,7 @@ const slice = createSlice({
 });
 
 const { reducer, actions } = slice;
-export const { GET_POST, HANDLE_LOADING, HANDLE_SET_TYPE, GET_TOTALPAGE ,HANDLE_SET_SELECTED_INDEX} =
+export const { GET_POST, HANDLE_LOADING, GET_CULTURE, HANDLE_SET_TYPE, GET_TOTALPAGE ,HANDLE_SET_SELECTED_INDEX} =
   actions;
 
 export default reducer;

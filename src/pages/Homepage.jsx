@@ -231,8 +231,10 @@ const testimonials = [
 
 const Homepage = () => {
   const [shortcuts, setShortCuts] = useState([]);
-  const {handleSetSelectedIndex} = usePost()
-  const form = useRef()
+  const {post, type, handleGetPost, culture, handleGetCulture ,handleSetSelectedIndex} = usePost();
+  const [currentPage, setCurrentPage] = useState(1);
+  const form = useRef();
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -256,9 +258,11 @@ const Homepage = () => {
   };
 
   useEffect(() => {
+    handleGetPost(currentPage, 'thong-tin-du-hoc', type);
+    handleGetCulture(currentPage, 'van-hoa-cac-nuoc', type)
     setShortCuts(shortcut);
-  },[]);
-
+  },[currentPage,type]);
+console.log(culture)
   return (
     <div>
       <Carousel autoPlay autoFocus infiniteLoop showThumbs={false}>
@@ -353,20 +357,20 @@ const Homepage = () => {
               </div>
 
               <div className="row d-flex align-items-center TTDH-responsive">
-                {news.map((newsB) => (
+                {post.map((newsB) => (
                   <div
                     className="col-md-4"
                     style={{ paddingRight: 10, paddingLeft: 10 }}
                     key={newsB._id}
                   >
                     <img
-                      src={newsB.thumbnail}
+                      src={newsB.thumbnail_url}
                       className="news-thumbnail"
                       effect="blur"
                       alt="Hình ảnh tin tức du học"
                     />
                     {/* <Link to="/news"> */}
-                    <Link to={`/${newsB.metaUrl}`} className="news-title">
+                    <Link to={`/thong-tin-du-hoc/${newsB._id}`} className="news-title">
                       {newsB.title}
                     </Link>
                     {/* </Link> */}
@@ -444,19 +448,19 @@ const Homepage = () => {
               </h3>
 
               <div className="row d-flex align-items-center">
-                {newsCulture.map((newsB) => (
+                {culture.map((newsB) => (
                   <div
                     className="col-lg-4"
                     style={{ paddingRight: 10, paddingLeft: 10 }}
                     key={newsB._id}
                   >
                     <img
-                      src={newsB.thumbnail}
+                      src={newsB.thumbnail_url}
                       className="news-thumbnail"
                       effect="blur"
                       alt="Hình ảnh văn hoá các nước"
                     />
-                    <Link to="/van-hoa-cac-nuoc" className="news-title">
+                    <Link to={`/van-hoa-cac-nuoc/${newsB._id}`} className="news-title">
                       {newsB.title}
                     </Link>
                     <p

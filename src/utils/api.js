@@ -4,6 +4,7 @@ const GET_API = ({id,  page,cat, type}) => {
       getPost: `/posts?page=${page}&category=${cat}&type=${type}`,
       getNews: `/posts?page=${page}&category=${cat}`,
       getAllPost: `/posts`,
+      getCulture: `/posts?page=${page}&category=${cat}&type=${type}`,
     };
   }
   

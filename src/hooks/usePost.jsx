@@ -6,14 +6,15 @@ import {
   GET_POST,
   HANDLE_SET_TYPE,
   GET_TOTALPAGE,
-  HANDLE_SET_SELECTED_INDEX
+  HANDLE_SET_SELECTED_INDEX,
+  GET_CULTURE,
 } from "../store/postSlice";
 
 
 const usePost = () => {
   const dispatch = useDispatch();
 
-  const { post, isLoading, type, totalPage,selectedIndex } = useSelector(
+  const { post, culture, isLoading, type, totalPage,selectedIndex } = useSelector(
     (state) => state.post
   );
 
@@ -69,6 +70,28 @@ const usePost = () => {
     }
   };
 
+  const handleGetCulture = async (page, cat, type) => {
+    dispatch(HANDLE_LOADING(true));
+    try {
+      const res = await axiosInstance.get(
+        GET_API({ page: page, cat: cat, type: type }).getCulture
+      );
+      if (res.data.status === "success") {
+        dispatch( GET_CULTURE(res.data.totalPage));
+        if (page === 1) {
+          dispatch(GET_CULTURE(res.data.posts));
+        } else {
+          const newArray = [...culture, ...res.data.posts];
+          dispatch(GET_POST(newArray));
+        }
+      }
+      dispatch(HANDLE_LOADING(false));
+    } catch (e) {
+      console.log(e);
+      dispatch(HANDLE_LOADING(false));
+    }
+  };
+
   const handleGetAllPost = async (page) => {
     dispatch(HANDLE_LOADING(true));
     try {
@@ -103,9 +126,13 @@ const usePost = () => {
     type,
     handleChangeSetType,
     totalPage,
+
     handleGetNews,
     selectedIndex,
-    handleGetAllPost
+    handleGetAllPost,
+
+    handleGetCulture,
+    culture,
   };
 };
 

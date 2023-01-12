@@ -5,7 +5,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
-import { usePathName } from "../hooks";
+import { usePathName, usePost } from "../hooks";
 
 const tabs = [
   {
@@ -90,13 +90,15 @@ const newsContent = [
 const Culture = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const [news, setNews] = useState([]);
-   const { handleGetPathName } = usePathName();
+  const { handleGetPathName } = usePathName();
+  const { culture ,type, handleGetCulture, totalPage } = usePost();
+  const [currentPage, setCurrentPage] = useState(1);
+  const cat = 'van-hoa-cac-nuoc'
 
   useEffect(() => {
-    setNews(newsContent);
     setLoading(false);
-  }, []);
+    handleGetCulture(currentPage, cat, type);
+  }, [currentPage, type]);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -169,7 +171,7 @@ const Culture = () => {
                     if (index === selectedIndex) {
                       return (
                         <TabPanel key={index}>
-                          {news.map((item, index) => {
+                          {culture.map((item, index) => {
                             return (
                               <div
                                 key={index}
@@ -182,7 +184,7 @@ const Culture = () => {
                               >
                                 <div className="col-md-4">
                                   <img
-                                    src={item.thumbnail}
+                                    src={item.thumbnail_url}
                                     alt=""
                                     style={{
                                       width: "100%",
@@ -263,23 +265,26 @@ const Culture = () => {
               </Tabs>
 
               {/* Load more button */}
+            { currentPage < totalPage ?
               <div className="row ">
-                <div className="col-md-12 d-flex align-items-center justify-content-center">
-                  <button
-                    className="btn btn-primary"
-                    style={{
-                      marginTop: 30,
-                      marginBottom: 30,
-                      fontSize: 18,
-                      paddingLeft: 30,
-                      paddingRight: 30,
-                    }}
-                  >
-                    Xem Thêm
-                  </button>
-                </div>
+              <div className="col-md-12 d-flex align-items-center justify-content-center">
+                <button
+                  className="btn btn-primary"
+                  style={{
+                    marginTop: 30,
+                    marginBottom: 30,
+                    fontSize: 18,
+                    paddingLeft: 30,
+                    paddingRight: 30,
+                  }}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  Xem Thêm
+                </button>
               </div>
             </div>
+            : null}
+          </div> 
 
             <Fanpage />
           </div>
