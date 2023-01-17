@@ -6,7 +6,7 @@ import { usePost,usePathName } from "../hooks";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
-  const {handleGetSearchResult} = usePost()
+  const {handleGetSearchResult,handleSetSelectedIndex} = usePost()
   const { handleGetPathName, pathName, handleSearch, searchResult } =
     usePathName();
   const [showSearch, setShowSearch] = useState(false);
@@ -41,8 +41,8 @@ export default function NavBar() {
   };
 
   const handleGetSearch = () => {
-    if(!searchResult){
-      return
+    if(searchResult === ""){
+      return 
     } else {
       handleGetSearchResult(searchResult)
     }
@@ -148,7 +148,9 @@ export default function NavBar() {
                         handleCloseNavMobile();
                       }}
                     >
-                      <span>Du học Hàn Quốc</span>{" "}
+                      <span onClick={() => handleSetSelectedIndex(0)}>
+                        Du học Hàn Quốc
+                      </span>{" "}
                       <i className="bi bi-chevron-right"></i>
                     </Link>
                     <ul>
@@ -179,16 +181,36 @@ export default function NavBar() {
                     </ul>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                    <Link
+                      href="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(1)}
+                    >
+                      Du học Đài Loan
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                    <Link
+                      href="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(2)}
+                    >
+                      Du học Trung Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                    <Link
+                      href="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(3)}
+                    >
+                      Du học Đức
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                    <Link
+                      href="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(4)}
+                    >
+                      Du học Úc
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -219,19 +241,19 @@ export default function NavBar() {
                 </Link>
                 <ul>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Hàn Quốc</a>
+                    <a href="/goc-du-hoc-sinh">Du học Hàn Quốc</a>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                    <a href="/goc-du-hoc-sinh">Du học Đài Loan</a>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                    <a href="/goc-du-hoc-sinh">Du học Trung Quốc</a>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                    <a href="/goc-du-hoc-sinh">Du học Đức</a>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                    <a href="/goc-du-hoc-sinh">Du học Úc</a>
                   </li>
                 </ul>
               </li>
@@ -282,7 +304,10 @@ export default function NavBar() {
                           }}
                           value={searchResult}
                         />
-                        <MdSearch className="navbar-searchIcon" onClick={() => handleGetSearch()}/>
+                        <MdSearch
+                          className="navbar-searchIcon"
+                          onClick={() => handleGetSearch()}
+                        />
                         <span className="highlight"></span>
                         <span className="bar"></span>
                       </div>

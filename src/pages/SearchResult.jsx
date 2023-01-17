@@ -125,7 +125,7 @@ console.log(result)
           {post.map((item, index) => {
             return (
               <div
-                key={index}
+                key={item?._id}
                 className="row"
                 style={{
                   borderBottom: "1px solid #e6e6e6",
@@ -147,7 +147,7 @@ console.log(result)
                 </div>
                 <div className="col-md-8">
                   <Link
-                    to={`/${item.metaUrl}`}
+                    to={`/thong-tin-du-hoc/${item._id}`}
                     className="news-title"
                     style={{
                       marginBottom: 5,

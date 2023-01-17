@@ -135,7 +135,6 @@ const Homepage = () => {
     handleSetSelectedIndex,
   } = usePost();
   const [currentPage, setCurrentPage] = useState(1);
-  const { enqueueSnackbar } = useAlert();
   const form = useRef();
    const notify = () => toast("Wow so easy !");
 

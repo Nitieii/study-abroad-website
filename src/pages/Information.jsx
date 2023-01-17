@@ -49,7 +49,7 @@ const Information = () => {
   useEffect(() => {
     handleGetPost(currentPage, cat, type);
  
-  }, [currentPage, type]);
+  }, [currentPage, type,selectedIndex]);
 
   return (
     <main id="main" data-aos="fade-up">
