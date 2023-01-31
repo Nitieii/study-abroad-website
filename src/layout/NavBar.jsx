@@ -2,11 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
-import { usePost,usePathName } from "../hooks";
+import { usePost, usePathName } from "../hooks";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
-  const {handleGetSearchResult,handleSetSelectedIndex} = usePost()
+  const { handleGetSearchResult, handleSetSelectedIndex } = usePost();
   const { handleGetPathName, pathName, handleSearch, searchResult } =
     usePathName();
   const [showSearch, setShowSearch] = useState(false);
@@ -41,12 +41,12 @@ export default function NavBar() {
   };
 
   const handleGetSearch = () => {
-    if(searchResult === ""){
-      return 
+    if (searchResult === "") {
+      return;
     } else {
-      handleGetSearchResult(searchResult)
+      handleGetSearchResult(searchResult);
     }
-  }
+  };
 
   const handleClose = () => {
     setShowSearch(false);
@@ -182,7 +182,7 @@ export default function NavBar() {
                   </li>
                   <li>
                     <Link
-                      href="/thong-tin-du-hoc"
+                      to="/thong-tin-du-hoc"
                       onClick={() => handleSetSelectedIndex(1)}
                     >
                       Du học Đài Loan
@@ -190,7 +190,7 @@ export default function NavBar() {
                   </li>
                   <li>
                     <Link
-                      href="/thong-tin-du-hoc"
+                      to="/thong-tin-du-hoc"
                       onClick={() => handleSetSelectedIndex(2)}
                     >
                       Du học Trung Quốc
@@ -198,7 +198,7 @@ export default function NavBar() {
                   </li>
                   <li>
                     <Link
-                      href="/thong-tin-du-hoc"
+                      to="/thong-tin-du-hoc"
                       onClick={() => handleSetSelectedIndex(3)}
                     >
                       Du học Đức
@@ -206,7 +206,7 @@ export default function NavBar() {
                   </li>
                   <li>
                     <Link
-                      href="/thong-tin-du-hoc"
+                      to="/thong-tin-du-hoc"
                       onClick={() => handleSetSelectedIndex(4)}
                     >
                       Du học Úc
@@ -241,19 +241,44 @@ export default function NavBar() {
                 </Link>
                 <ul>
                   <li>
-                    <a href="/goc-du-hoc-sinh">Du học Hàn Quốc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(0)}
+                    >
+                      Du học Hàn Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/goc-du-hoc-sinh">Du học Đài Loan</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(1)}
+                    >
+                      Du học Đài Loan
+                    </Link>
                   </li>
                   <li>
-                    <a href="/goc-du-hoc-sinh">Du học Trung Quốc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(2)}
+                    >
+                      Du học Trung Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/goc-du-hoc-sinh">Du học Đức</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(3)}
+                    >
+                      Du học Đức
+                    </Link>
                   </li>
                   <li>
-                    <a href="/goc-du-hoc-sinh">Du học Úc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(4)}
+                    >
+                      Du học Úc
+                    </Link>
                   </li>
                 </ul>
               </li>
