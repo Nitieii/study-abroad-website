@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
-import { MdSearch } from "react-icons/md";
+import { Link } from "react-router-dom"; import { MdSearch } from "react-icons/md";
+
+
+
 
 export default function Footer() {
   return (
@@ -12,12 +14,12 @@ export default function Footer() {
                 MKGroup<span>.</span>
               </h3>
               <p>
-                A108 Adam Street <br />
-                New York, NY 535022
+                số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
+                mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội <br />
                 <br />
-                United States <br />
+                - Việtệt Nam <br />
                 <br />
-                <strong>Điện thoại:</strong> +1 5589 55488 55
+                <strong>Điện thoại:</strong> 0974 082 088
                 <br />
                 <strong>Email:</strong> info@example.com
                 <br />
@@ -28,7 +30,7 @@ export default function Footer() {
               <h4>Đường Dẫn</h4>
               <ul>
                 <li>
-                  <i className="bx bx-chevron-right" ></i>{" "}
+                  <i className="bx bx-chevron-right"></i>{" "}
                   <Link to="/">Trang chủ</Link>
                 </li>
                 <li>

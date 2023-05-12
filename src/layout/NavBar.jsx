@@ -45,11 +45,19 @@ export default function NavBar() {
       return;
     } else {
       handleGetSearchResult(searchResult);
+      setShowSearch(false);
     }
   };
 
   const handleClose = () => {
     setShowSearch(false);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleGetSearchResult(searchResult);
+      setShowSearch(false);
+    }
   };
 
   const handleCloseNavMobile = () => {
@@ -83,7 +91,7 @@ export default function NavBar() {
               <Link to="mailto:contact@example.com">contact@example.com</Link>
             </i>
             <i className="bi bi-phone d-flex align-items-center ms-4">
-              <span>+1 5589 55488 55</span>
+              <span>0974 082 088</span>
             </i>
           </div>
           <div className="social-links d-none d-md-flex align-items-center">
@@ -327,6 +335,7 @@ export default function NavBar() {
                           onChange={(e) => {
                             handleSearch(e.target.value);
                           }}
+                          onKeyDown={handleKeyDown}
                           value={searchResult}
                         />
                         <MdSearch

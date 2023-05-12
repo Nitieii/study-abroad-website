@@ -4,10 +4,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
-import Fanpage from "../components/Fanpage";
 import { usePathName, usePost } from "../hooks";
 import "../assets/css/lineClamp.css";
-
 
 const newsContent = [
   {
@@ -74,24 +72,24 @@ const newsContent = [
 
 function SearchResult() {
   const [news, setNews] = useState([]);
-  const { handleGetPathName,searchResult } = usePathName();
-  const {post,handleGetSearchResult} = usePost()
+  const { handleGetPathName, searchResult,SearchResult,searchResultPage } = usePathName();
+  const { post, handleGetSearchResult } = usePost();
   const [currentPage, setCurrentPage] = useState(1);
-  const result = post.length
+  const result = post.length;
 
   // const result = post.filter((item) =>
   //   item.title.toLowerCase().includes(searchResult.toLowerCase())
   // );
   // const result = post.find((item) => item.title === "ff"
-   
+
   // );
-console.log(result)
+  console.log(result);
   useEffect(() => {
     setNews(news);
-   
+
     // handleGetSearchResult(searchResult)
-   
   }, [currentPage]);
+  console.log(post);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -119,7 +117,7 @@ console.log(result)
       <section className="inner-page">
         <div className="container">
           <p style={{ marginBottom: 30, marginTop: 30 }}>
-            Tìm thấy {post.length} kết quả cho từ khóa "{searchResult}"
+            Tìm thấy {post.length} kết quả cho từ khóa "{searchResultPage}"
           </p>
 
           {post.map((item, index) => {
@@ -178,7 +176,7 @@ console.log(result)
                   </p>
                   <div
                     className="line-clamp"
-                    style={{ fontSize: "14px" }}
+                    style={{ fontSize: "14px !important" }}
                     dangerouslySetInnerHTML={{ __html: item.description }}
                   ></div>
                 </div>
@@ -203,7 +201,6 @@ console.log(result)
               </button>
             </div>
           </div>
-          <Fanpage />
         </div>
       </section>
     </main>

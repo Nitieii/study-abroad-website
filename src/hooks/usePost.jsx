@@ -9,8 +9,10 @@ import {
   HANDLE_SET_SELECTED_INDEX,
   GET_CULTURE,
 } from "../store/postSlice";
+import { HANDLE_GET_SEARCH_RESULT,HANDLE_GET_SEARCH_RESULT_PAGE } from "../store/pathNameSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 
 const usePost = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const usePost = () => {
   // arrayPost.length = 3
   const { post, culture, isLoading, type, totalPage, selectedIndex } =
     useSelector((state) => state.post);
+
+  // const {searchResult} = useSelector((state) => state.searchResult)
 
   const handleGetPost = async (page, cat, type) => {
     dispatch(HANDLE_LOADING(true));
@@ -104,6 +108,8 @@ const usePost = () => {
         dispatch(GET_POST(res.data.posts));
         navigate("/ket-qua");
       }
+      dispatch(HANDLE_GET_SEARCH_RESULT(""));
+
       dispatch(HANDLE_LOADING(false));
     } catch (error) {
       console.log("error", error);
