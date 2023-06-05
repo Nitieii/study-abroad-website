@@ -759,7 +759,7 @@ const Homepage = () => {
                     >
                       Loại hình du học
                     </label>
-                    <select className="form-control" id="mySelect">
+                    <select className="form-control" id="mySelect" >
                       <option value="carrer">Du học nghề</option>
                       <option value="sound">Du học tiếng</option>
                     </select>
