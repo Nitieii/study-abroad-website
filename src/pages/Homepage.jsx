@@ -136,7 +136,7 @@ const Homepage = () => {
   } = usePost();
   const [currentPage, setCurrentPage] = useState(1);
   const form = useRef();
-   const notify = () => toast("Wow so easy !");
+  const notify = () => toast("Wow so easy !");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -159,7 +159,7 @@ const Homepage = () => {
     // enqueueSnackbar("thành công", {
     //   variant: "success",
     // });
-    toast.success("Gửi email thành công")
+    toast.success("Gửi email thành công");
     e.target.reset();
   };
 
@@ -171,15 +171,14 @@ const Homepage = () => {
     handleGetIMG("du-hoc-han-quoc");
   }, [currentPage, type]);
 
-  const arrayPost = [...post]
-  arrayPost.length = 3
+  const arrayPost = [...post];
+  arrayPost.length = 3;
 
-  const arrayCulture = [...culture]
-  arrayCulture.length = [3]
+  const arrayCulture = [...culture];
+  arrayCulture.length = [3];
   return (
     <div>
       <div>
-       
         <ToastContainer />
       </div>
       <Carousel autoPlay autoFocus infiniteLoop showThumbs={false}>
@@ -714,6 +713,59 @@ const Homepage = () => {
                     />
                   </div>
                 </div>
+
+                <div className="row">
+                  <div className="col form-group">
+                    <input
+                      type="text"
+                      name="phone"
+                      className="form-control"
+                      id="phone"
+                      placeholder="Số điện thoại của bạn"
+                      required
+                    />
+                  </div>
+                  <div className="col form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="level"
+                      id="level"
+                      placeholder="Trình độ học vấn của bạn"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col form-group">
+                    <label
+                      style={{ fontFamily: "Open Sans", color: "#444444" }}
+                    >
+                      Hình thức
+                    </label>
+
+                    <select className="form-control">
+                      <option value="direct">Trực tiếp</option>
+                      <option value="phone">Trao đổi qua điện thoại</option>
+                      <option value="zalo">Zalo</option>
+                      <option value="email">Email</option>
+                    </select>
+                  </div>
+                  <div className="col form-group">
+                    <label
+                      for="mySelect"
+                      style={{ fontFamily: "Open Sans", color: "#444444" }}
+                    >
+                      Loại hình du học
+                    </label>
+                    <select className="form-control" id="mySelect">
+                      <option value="carrer">Du học nghề</option>
+                      <option value="sound">Du học tiếng</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div className="form-group">
                   <input
                     type="text"

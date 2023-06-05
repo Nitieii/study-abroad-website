@@ -17,11 +17,11 @@ export default function Footer() {
                 số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
                 mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội <br />
                 <br />
-                - Việtệt Nam <br />
+                - Việt Nam <br />
                 <br />
                 <strong>Điện thoại:</strong> 0974 082 088
                 <br />
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> mkhqmanpower@gmail.com
                 <br />
               </p>
             </div>
