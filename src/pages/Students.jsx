@@ -4,8 +4,8 @@ import WSPGallery from "../components/Gallery";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
-import { usePathName } from "../hooks";
-import useUploader from "../hooks/useUploader";
+import { usePathName,usePost } from "../hooks";
+import useImage from "../hooks/useImage";
 
 const items = [
   {
@@ -46,38 +46,40 @@ const tabs = [
   {
     index: 0,
     title: "Du học Hàn Quốc",
+    type: "du-hoc-han-quoc",
   },
   {
     index: 1,
     title: "Du học Đài Loan",
+    type: "du-hoc-dai-loan",
   },
   {
     index: 2,
     title: "Du học Trung Quốc",
+    type: "du-hoc-trung-quoc",
   },
   {
     index: 3,
     title: "Du học Đức",
+    type: "du-hoc-duc",
   },
   {
     index: 4,
     title: "Du học Úc",
+    type: "du-hoc-uc",
   },
 ];
 
 const Students = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [images, setImages] = useState([]);
+  // const [selectedIndex, setSelectedIndex] = useState(0);
   const { handleGetPathName } = usePathName();
-  const { isLoading, file, handleUploadImg, handleGetImage, handleDeleteImage, handleLoadIMG } = useUploader()
-  const [cat, setCat] = useState("du-hoc-han-quoc")
+  const { isLoading, img, handleGetIMG } = useImage();
+  const { type, handleChangeSetType, selectedIndex, handleSetSelectedIndex } =
+    usePost();
 
   useEffect(() => {
-    handleGetImage("du-hoc-han-quoc")
-    setImages(items);
-    setLoading(false);
-  }, []);
+    handleGetIMG(type)
+  }, [type]);
 
   return (
     <main id="main" data-aos="fade-up">
@@ -114,7 +116,7 @@ const Students = () => {
             <div className="col-lg-8">
               <Tabs
                 selectedIndex={selectedIndex}
-                onSelect={(tabIndex) => setSelectedIndex(tabIndex)}
+                onSelect={(tabIndex) => handleSetSelectedIndex(tabIndex)}
               >
                 <TabList>
                   {tabs.map((tab) => (
@@ -148,9 +150,10 @@ const Students = () => {
                 {tabs &&
                   tabs.map((tab, index) => {
                     if (index === selectedIndex) {
+                       handleChangeSetType(tab.type);
                       return (
                         <TabPanel key={index}>
-                          <WSPGallery galleryImages={images} />
+                          <WSPGallery galleryImages={img} />
                         </TabPanel>
                       );
                     }

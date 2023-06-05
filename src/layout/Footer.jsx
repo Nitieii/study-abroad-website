@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
-import { MdSearch } from "react-icons/md";
+import { Link } from "react-router-dom"; import { MdSearch } from "react-icons/md";
+
+
+
 
 export default function Footer() {
   return (
@@ -12,14 +14,14 @@ export default function Footer() {
                 MKGroup<span>.</span>
               </h3>
               <p>
-                A108 Adam Street <br />
-                New York, NY 535022
+                số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
+                mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội <br />
                 <br />
-                United States <br />
+                - Việt Nam <br />
                 <br />
-                <strong>Điện thoại:</strong> +1 5589 55488 55
+                <strong>Điện thoại:</strong> 0974 082 088
                 <br />
-                <strong>Email:</strong> info@example.com
+                <strong>Email:</strong> mkhqmanpower@gmail.com
                 <br />
               </p>
             </div>
@@ -29,23 +31,23 @@ export default function Footer() {
               <ul>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Trang chủ</Link>
+                  <Link to="/">Trang chủ</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Thông tin du học</Link>
+                  <Link to="/thong-tin-du-hoc">Thông tin du học</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Tin tức</Link>
+                  <Link to="/tin-tuc">Tin tức</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Góc du học sinh</Link>
+                  <Link to="/goc-du-hoc-sinh">Góc du học sinh</Link>
                 </li>
                 <li>
                   <i className="bx bx-chevron-right"></i>{" "}
-                  <Link href="#">Văn hoá các nước</Link>
+                  <Link to="/van-hoa-cac-nuoc">Văn hoá các nước</Link>
                 </li>
               </ul>
             </div>

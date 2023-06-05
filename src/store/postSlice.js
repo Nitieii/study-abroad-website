@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  post: [],
   isLoading: false,
-  type: "du-hoc-han-quoc",
+  post: [],
+  culture: [],
   totalPage: 1,
+  type: "",
+  selectedIndex: 0,
 };
-
 const slice = createSlice({
   name: "post",
+  name: "culture",
   initialState,
   reducers: {
     HANDLE_LOADING: (state, action) => {
@@ -17,22 +19,30 @@ const slice = createSlice({
     GET_POST: (state, action) => {
       state.post = action.payload;
     },
+    GET_CULTURE: (state, action) => {
+      state.culture = action.payload;
+    },
     HANDLE_SET_TYPE: (state, action) => {
       state.type = action.payload;
     },
     GET_TOTALPAGE: (state, action) => {
       state.totalPage = action.payload;
     },
-    DELETE_POST: (state, actions) => void (
-      state.post = state.post.filter(e => e._id !== actions.payload)
-    )
-
+    HANDLE_SET_SELECTED_INDEX: (state, action) => {
+      state.selectedIndex = action.payload;
+    },
+    
   },
 });
 
 const { reducer, actions } = slice;
-
-export const { GET_POST, HANDLE_LOADING, HANDLE_SET_TYPE, GET_TOTALPAGE, DELETE_POST } =
-  actions;
+export const {
+  GET_POST,
+  HANDLE_LOADING,
+  GET_CULTURE,
+  HANDLE_SET_TYPE,
+  GET_TOTALPAGE,
+  HANDLE_SET_SELECTED_INDEX,
+} = actions;
 
 export default reducer;

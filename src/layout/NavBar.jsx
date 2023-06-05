@@ -1,14 +1,16 @@
 import { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdSearch } from "react-icons/md";
 import CheckOutSideClick from "../components/CheckOutSideClick";
-import usePathName from '../hooks/usePathName'
+import { usePost, usePathName } from "../hooks";
 
 export default function NavBar() {
   const [isMobile, setIsMobile] = useState(false);
-  // const [pathName, setPathName] = useState(window.location.pathname);
-  const {handleGetPathName,pathName} = usePathName()
+  const { handleGetSearchResult, handleSetSelectedIndex } = usePost();
+  const { handleGetPathName, pathName, handleSearch, searchResult } =
+    usePathName();
   const [showSearch, setShowSearch] = useState(false);
+  const navigate = useNavigate();
 
   let menuRef = useRef();
   const select = (el, all = false) => {
@@ -32,14 +34,30 @@ export default function NavBar() {
       e.nextElementSibling.classList.toggle("dropdown-active");
     }
   };
-
+  // console.log(searchResult)
+  // console.log(showSearch)
   const handleShowSearch = () => {
-    setShowSearch(!showSearch);
-    // select('#navbar').classList.toggle('navbar-select')
+    setShowSearch(true);
+  };
+
+  const handleGetSearch = () => {
+    if (searchResult === "") {
+      return;
+    } else {
+      handleGetSearchResult(searchResult);
+      setShowSearch(false);
+    }
   };
 
   const handleClose = () => {
     setShowSearch(false);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleGetSearchResult(searchResult);
+      setShowSearch(false);
+    }
   };
 
   const handleCloseNavMobile = () => {
@@ -50,8 +68,8 @@ export default function NavBar() {
 
   useEffect(() => {
     // setPathName(window.location.pathname);
-    handleGetPathName(window.location.pathname)
-    console.log(pathName)
+    handleGetPathName(window.location.pathname);
+    // console.log(pathName);
     const navLinks = select("#navbar .nav-link", true);
 
     navLinks.forEach((link) => {
@@ -62,6 +80,7 @@ export default function NavBar() {
       }
     });
   }, [pathName]);
+  // console.log(searchResult);
 
   return (
     <>
@@ -72,7 +91,7 @@ export default function NavBar() {
               <Link to="mailto:contact@example.com">contact@example.com</Link>
             </i>
             <i className="bi bi-phone d-flex align-items-center ms-4">
-              <span>+1 5589 55488 55</span>
+              <span>0974 082 088</span>
             </i>
           </div>
           <div className="social-links d-none d-md-flex align-items-center">
@@ -133,11 +152,13 @@ export default function NavBar() {
                       to="/thong-tin-du-hoc"
                       onClick={() => {
                         // setPathName("/thong-tin-du-hoc");
-                          handleGetPathName("/thong-tin-du-hoc");
+                        handleGetPathName("/thong-tin-du-hoc");
                         handleCloseNavMobile();
                       }}
                     >
-                      <span>Du học Hàn Quốc</span>{" "}
+                      <span onClick={() => handleSetSelectedIndex(0)}>
+                        Du học Hàn Quốc
+                      </span>{" "}
                       <i className="bi bi-chevron-right"></i>
                     </Link>
                     <ul>
@@ -146,7 +167,7 @@ export default function NavBar() {
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             // setPathName("/thong-tin-du-hoc");
-                              handleGetPathName("/thong-tin-du-hoc");
+                            handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -158,7 +179,7 @@ export default function NavBar() {
                           to="/thong-tin-du-hoc"
                           onClick={() => {
                             // setPathName("/thong-tin-du-hoc");
-                              handleGetPathName("/thong-tin-du-hoc");
+                            handleGetPathName("/thong-tin-du-hoc");
                             handleCloseNavMobile();
                           }}
                         >
@@ -168,16 +189,36 @@ export default function NavBar() {
                     </ul>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                    <Link
+                      to="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(1)}
+                    >
+                      Du học Đài Loan
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                    <Link
+                      to="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(2)}
+                    >
+                      Du học Trung Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                    <Link
+                      to="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(3)}
+                    >
+                      Du học Đức
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                    <Link
+                      to="/thong-tin-du-hoc"
+                      onClick={() => handleSetSelectedIndex(4)}
+                    >
+                      Du học Úc
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -187,7 +228,7 @@ export default function NavBar() {
                   to="/tin-tuc"
                   onClick={() => {
                     // setPathName("/tin-tuc");
-                     handleGetPathName("/tin-tuc");
+                    handleGetPathName("/tin-tuc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -199,7 +240,7 @@ export default function NavBar() {
                   to="/goc-du-hoc-sinh"
                   onClick={() => {
                     // setPathName("/goc-du-hoc-sinh");
-                      handleGetPathName("/goc-du-hoc-sinh");
+                    handleGetPathName("/goc-du-hoc-sinh");
                     handleCloseNavMobile();
                   }}
                 >
@@ -208,19 +249,44 @@ export default function NavBar() {
                 </Link>
                 <ul>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Hàn Quốc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(0)}
+                    >
+                      Du học Hàn Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đài Loan</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(1)}
+                    >
+                      Du học Đài Loan
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Trung Quốc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(2)}
+                    >
+                      Du học Trung Quốc
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Đức</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(3)}
+                    >
+                      Du học Đức
+                    </Link>
                   </li>
                   <li>
-                    <a href="/thong-tin-du-hoc">Du học Úc</a>
+                    <Link
+                      to="/goc-du-hoc-sinh"
+                      onClick={() => handleSetSelectedIndex(4)}
+                    >
+                      Du học Úc
+                    </Link>
                   </li>
                 </ul>
               </li>
@@ -230,7 +296,7 @@ export default function NavBar() {
                   to="/van-hoa-cac-nuoc"
                   onClick={() => {
                     // setPathName("/van-hoa-cac-nuoc");
-                      handleGetPathName("/van-hoa-cac-nuoc");
+                    handleGetPathName("/van-hoa-cac-nuoc");
                     handleCloseNavMobile();
                   }}
                 >
@@ -243,7 +309,7 @@ export default function NavBar() {
                   to="/lien-he"
                   onClick={() => {
                     // setPathName("/lien-he");
-                     handleGetPathName("/lien-he");
+                    handleGetPathName("/lien-he");
                     handleCloseNavMobile();
                   }}
                 >
@@ -252,8 +318,12 @@ export default function NavBar() {
               </li>
 
               <li>
-                <Link style={{ fontSize: "24px" }}>
-                  <MdSearch onClick={handleShowSearch} />
+                <Link
+                  style={{ fontSize: "24px" }}
+                  onClick={handleShowSearch}
+                  // to={searchResult ? "/ket-qua" : null}
+                >
+                  <MdSearch />
                   {showSearch && (
                     <CheckOutSideClick onClickOutSide={handleClose}>
                       <div className="group">
@@ -262,6 +332,15 @@ export default function NavBar() {
                           type="text"
                           className="input"
                           placeholder="Nhập từ khóa tìm kiếm"
+                          onChange={(e) => {
+                            handleSearch(e.target.value);
+                          }}
+                          onKeyDown={handleKeyDown}
+                          value={searchResult}
+                        />
+                        <MdSearch
+                          className="navbar-searchIcon"
+                          onClick={() => handleGetSearch()}
                         />
                         <span className="highlight"></span>
                         <span className="bar"></span>

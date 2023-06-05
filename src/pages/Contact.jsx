@@ -1,8 +1,32 @@
 import { Link } from "react-router-dom";
 import { usePathName } from "../hooks";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
    const { handleGetPathName } = usePathName();
+   const form  = useRef()
+   const sendEmail = (e) => {
+     e.preventDefault();
+
+     emailjs
+       .sendForm(
+         "service_h229yt4",
+         "template_r90zafv",
+         form.current,
+         "fjpC-B_Bu53YcXJPO"
+       )
+       .then(
+         (result) => {
+           console.log(result.text);
+         },
+         (error) => {
+           console.log(error.text);
+         }
+       );
+     e.target.reset();
+   };
+
   return (
     <main id="main" data-aos="fade-up">
       <section className="breadcrumbs">
@@ -73,6 +97,8 @@ const Contact = () => {
                 method="post"
                 role="form"
                 className="php-email-form"
+                ref={form}
+                onSubmit={sendEmail}
               >
                 <div className="row">
                   <div className="col form-group">

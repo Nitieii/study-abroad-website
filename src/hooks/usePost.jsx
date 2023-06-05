@@ -1,22 +1,28 @@
 import { useSelector, useDispatch } from "react-redux";
-import axiosInstance from "../../utils/axios";
-import { POST_API, GET_API, DELETE_API, UPDATE_API } from "../../utils/api";
+import axiosInstance from "../utils/axios";
+import { POST_API, GET_API, DELETE_API, UPDATE_API } from "../utils/api";
 import {
   HANDLE_LOADING,
   GET_POST,
   HANDLE_SET_TYPE,
   GET_TOTALPAGE,
-  DELETE_POST
+  HANDLE_SET_SELECTED_INDEX,
+  GET_CULTURE,
 } from "../store/postSlice";
+import { HANDLE_GET_SEARCH_RESULT,HANDLE_GET_SEARCH_RESULT_PAGE } from "../store/pathNameSlice";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 
 const usePost = () => {
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useAlert();
-  const { post, isLoading, type, totalPage } = useSelector(
-    (state) => state.post
-  );
   const navigate = useNavigate();
+  // const [arrayPost, setArray] = useState([])
+  // arrayPost.length = 3
+  const { post, culture, isLoading, type, totalPage, selectedIndex } =
+    useSelector((state) => state.post);
+
+  // const {searchResult} = useSelector((state) => state.searchResult)
 
   const handleGetPost = async (page, cat, type) => {
     dispatch(HANDLE_LOADING(true));
@@ -24,14 +30,17 @@ const usePost = () => {
       const res = await axiosInstance.get(
         GET_API({ page: page, cat: cat, type: type }).getPost
       );
-
+      // console.log(res.data)
       if (res.data.status === "success") {
         dispatch(GET_TOTALPAGE(res.data.totalPage));
         if (page == 1) {
+          // console.log(res.data.posts);
           dispatch(GET_POST(res.data.posts));
+          // setArray(res.data.posts)
         } else {
           const newArray = [...post, ...res.data.posts];
           dispatch(GET_POST(newArray));
+          // console.log(newArray);
         }
       }
       dispatch(HANDLE_LOADING(false));
@@ -40,32 +49,67 @@ const usePost = () => {
       console.log(e);
     }
   };
-  const handleCreatePost = async (form) => {
+
+  const handleChangeSetType = (type) => {
+    dispatch(HANDLE_SET_TYPE(type));
+  };
+
+  const handleGetNews = async (page, cat) => {
     dispatch(HANDLE_LOADING(true));
     try {
-      const res = await axiosInstance.post(POST_API().createPost, form, {
-        headers: { "Content-type": "multipart/form-data" },
-      });
-      // dispatch(SET_POST(res.data));
+      const res = await axiosInstance.get(
+        GET_API({ page: page, cat: cat }).getNews
+      );
       if (res.data.status === "success") {
-        enqueueSnackbar("Tạo bài viết thành công", { variant: "success" });
-        navigate("/thong-tin-du-hoc-sinh");
-        dispatch(HANDLE_LOADING(false));
+        dispatch(GET_TOTALPAGE(res.data.totalPage));
+        if (page === 1) {
+          dispatch(GET_POST(res.data.posts));
+        } else {
+          const newArray = [...news, ...res.data.posts];
+          dispatch(GET_POST(newArray));
+        }
       }
-    } catch (error) {
-      console.log("err", error);
+      dispatch(HANDLE_LOADING(false));
+    } catch (e) {
+      console.log(e);
       dispatch(HANDLE_LOADING(false));
     }
   };
 
-  const handleEditPost = async (id, form, cat) => {
+  const handleGetCulture = async (page, cat, type) => {
     dispatch(HANDLE_LOADING(true));
     try {
-      const res = await axiosInstance.put(UPDATE_API(id).updatePost, form);
-      enqueueSnackbar("Chỉnh sửa bài viết thành công", {
-        variant: "success",
-      });
-      navigate(`/${cat}`);
+      const res = await axiosInstance.get(
+        GET_API({ page: page, cat: cat, type: type }).getCulture
+      );
+      if (res.data.status === "success") {
+        dispatch(GET_CULTURE(res.data.totalPage));
+        if (page === 1) {
+          dispatch(GET_CULTURE(res.data.posts));
+        } else {
+          const newArray = [...culture, ...res.data.posts];
+          dispatch(GET_POST(newArray));
+        }
+      }
+      dispatch(HANDLE_LOADING(false));
+    } catch (e) {
+      console.log(e);
+      dispatch(HANDLE_LOADING(false));
+    }
+  };
+
+  const handleGetSearchResult = async (keyword) => {
+    dispatch(HANDLE_LOADING(true));
+    try {
+      const res = await axiosInstance.get(
+        GET_API({ keyword: keyword }).getSearchResult
+      );
+      if (res.data.status === "success") {
+        dispatch(GET_POST(res.data.posts));
+        navigate("/ket-qua");
+      }
+      dispatch(HANDLE_GET_SEARCH_RESULT(""));
+
       dispatch(HANDLE_LOADING(false));
     } catch (error) {
       console.log("error", error);
@@ -73,34 +117,24 @@ const usePost = () => {
     }
   };
 
-  const handleDeletePost = async (id) => {
-    dispatch(HANDLE_LOADING(true));
-    try {
-      await axiosInstance.delete(DELETE_API(id).deletePost)
-        .then(() => {
-          dispatch(DELETE_POST(id))
-        })
-      dispatch(HANDLE_LOADING(false));
-    } catch (error) {
-      console.log("err", error);
-      dispatch(HANDLE_LOADING(false));
-    }
-  };
-
-  const handleChangeSetType = (type) => {
-    dispatch(HANDLE_SET_TYPE(type));
+  const handleSetSelectedIndex = (index) => {
+    dispatch(HANDLE_SET_SELECTED_INDEX(index));
   };
 
   return {
-    handleCreatePost,
     post,
     isLoading,
     handleGetPost,
-    handleDeletePost,
-    handleEditPost,
+    handleSetSelectedIndex,
     type,
     handleChangeSetType,
     totalPage,
+    handleGetSearchResult,
+    handleGetNews,
+    selectedIndex,
+    // arrayPost,
+    handleGetCulture,
+    culture,
   };
 };
 
