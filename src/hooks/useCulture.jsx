@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import axiosInstance from "../../utils/axios";
-import { POST_API, GET_API, DELETE_API } from "../../utils/api";
+import axiosInstance from "../utils/axios";
+import { POST_API, GET_API, DELETE_API } from "../utils/api";
 import {
     GET_POST, GET_TOTAL, HANDLE_DELETE, HANDLE_LOADING
 } from "../store/culSlice"
