@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import useCulture from "../hooks/useCulture";
 import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
