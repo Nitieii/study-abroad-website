@@ -672,7 +672,7 @@ const Homepage = () => {
               <div className="info-box  mb-4">
                 <i className="bx bx-phone-call"></i>
                 <h3>Liên hệ</h3>
-                <p>+1 5589 55488 55</p>
+                <p>0974 082 088</p>
               </div>
             </div>
           </div>
@@ -745,13 +745,14 @@ const Homepage = () => {
 
                 <div className="row">
                   <div className="col form-group">
-                    <label
-                      style={{ fontFamily: "Open Sans", color: "#444444" }}
-                    >
-                      Hình thức liên lạc
-                    </label>
-
                     <select className="form-control">
+                      <option
+                        value=""
+                        disabled
+                        selected
+                      >
+                        Hình thức liên lạc
+                      </option>
                       <option value="direct">Trực tiếp</option>
                       <option value="phone">Trao đổi qua điện thoại</option>
                       <option value="zalo">Zalo</option>
@@ -759,13 +760,10 @@ const Homepage = () => {
                     </select>
                   </div>
                   <div className="col form-group">
-                    <label
-                      for="mySelect"
-                      style={{ fontFamily: "Open Sans", color: "#444444" }}
-                    >
-                      Loại hình du học
-                    </label>
                     <select className="form-control" id="mySelect">
+                      <option value="" disabled selected>
+                        Loại hình du học
+                      </option>
                       <option value="carrer">Du học nghề</option>
                       <option value="sound">Du học tiếng</option>
                     </select>
