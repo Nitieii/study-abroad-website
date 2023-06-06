@@ -14,6 +14,7 @@ import emailjs from "@emailjs/browser";
 import useImg from "../hooks/useImage";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "../assets/css/lineClamp.css";
 
 const slides = [
   {
@@ -295,6 +296,7 @@ const Homepage = () => {
                     <Link
                       to={`/thong-tin-du-hoc/${newsB._id}`}
                       className="news-title"
+                      
                     >
                       {newsB.title}
                     </Link>
@@ -316,9 +318,10 @@ const Homepage = () => {
                       </span>
                     </p>
                     <div
+                      className="line-clamp"
                       style={{ fontSize: "14px" }}
                       dangerouslySetInnerHTML={{
-                        __html: newsB.content,
+                        __html: newsB.description,
                       }}
                     />
                   </div>
@@ -408,9 +411,10 @@ const Homepage = () => {
                       </span>
                     </p>
                     <div
+                    className="line-clamp"
                       style={{ fontSize: "14px" }}
                       dangerouslySetInnerHTML={{
-                        __html: newsB.content,
+                        __html: newsB.description,
                       }}
                     />
                   </div>
