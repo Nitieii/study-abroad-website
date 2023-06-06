@@ -14,8 +14,9 @@ export default function Footer() {
                 MKGroup<span>.</span>
               </h3>
               <p>
-                Số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
-                mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội - Việt Nam <br />
+                Số 32 - đường AVE 1 – Sunrise C, Block 5, khu đô thị The Manor
+                Central Park, Nguyễn Xiển, Đại Kim, Hoàng Mai, Hà Nội - Việt Nam
+                <br />
                 <br />
                 <strong>Điện thoại:</strong> 0974 082 088
                 <br />

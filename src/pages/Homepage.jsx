@@ -653,9 +653,9 @@ const Homepage = () => {
                 <i className="bx bx-map"></i>
                 <h3>Địa chỉ của chúng tôi</h3>
                 <p>
-                  {" "}
-                  Số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
-                  mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội - Việt Nam
+                  Số 32 - đường AVE 1 – Sunrise C, Block 5, khu đô thị The Manor
+                  Central Park, Nguyễn Xiển, Đại Kim, Hoàng Mai, Hà Nội - Việt
+                  Nam
                 </p>
               </div>
             </div>
@@ -681,7 +681,7 @@ const Homepage = () => {
             <div className="col-lg-6 ">
               <iframe
                 className="mb-4 mb-lg-0"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                src="https://www.google.com/maps/embed/v1/place?q=The+Manor+Central+Park,+Đường+Nguyễn+Xiển,+Đại+Kim,+Hoàng+Mai,+Hà+Nội,+Việt+Nam&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"
                 frameBorder="0"
                 style={{ border: 0, width: "100%", height: "384px" }}
                 allowFullScreen
@@ -746,12 +746,8 @@ const Homepage = () => {
                 <div className="row">
                   <div className="col form-group">
                     <select className="form-control">
-                      <option
-                        value=""
-                        disabled
-                        selected
-                      >
-                        Hình thức liên lạc
+                      <option value="" disabled selected>
+                        Hình thức nhận tư vấn
                       </option>
                       <option value="direct">Trực tiếp</option>
                       <option value="phone">Trao đổi qua điện thoại</option>
@@ -762,30 +758,21 @@ const Homepage = () => {
                   <div className="col form-group">
                     <select className="form-control" id="mySelect">
                       <option value="" disabled selected>
-                        Loại hình du học
+                        Hình thức đi
                       </option>
                       <option value="carrer">Du học nghề</option>
                       <option value="sound">Du học tiếng</option>
+                      <option value="work">Xuất khẩu lao động</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Chủ đề"
-                    required
-                  />
-                </div>
-                <div className="form-group">
                   <textarea
                     className="form-control"
                     name="message"
                     rows="5"
-                    placeholder="Nội dung bạn muốn gửi đến chúng tôi..."
+                    placeholder="Câu hỏi bạn muốn gửi đến chúng tôi..."
                     required
                   ></textarea>
                 </div>
