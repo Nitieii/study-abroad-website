@@ -176,6 +176,8 @@ const Homepage = () => {
 
   const arrayCulture = [...culture];
   arrayCulture.length = [3];
+
+  console.log(arrayCulture)
   return (
     <div>
       <div>
@@ -650,7 +652,11 @@ const Homepage = () => {
               <div className="info-box mb-4">
                 <i className="bx bx-map"></i>
                 <h3>Địa chỉ của chúng tôi</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>
+                  {" "}
+                  Số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
+                  mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội - Việt Nam
+                </p>
               </div>
             </div>
 
@@ -658,7 +664,7 @@ const Homepage = () => {
               <div className="info-box  mb-4">
                 <i className="bx bx-envelope"></i>
                 <h3>Email</h3>
-                <p>contact@example.com</p>
+                <p>mkhqmanpower@gmail.com</p>
               </div>
             </div>
 
@@ -742,7 +748,7 @@ const Homepage = () => {
                     <label
                       style={{ fontFamily: "Open Sans", color: "#444444" }}
                     >
-                      Hình thức
+                      Hình thức liên lạc
                     </label>
 
                     <select className="form-control">
@@ -759,7 +765,7 @@ const Homepage = () => {
                     >
                       Loại hình du học
                     </label>
-                    <select className="form-control" id="mySelect" >
+                    <select className="form-control" id="mySelect">
                       <option value="carrer">Du học nghề</option>
                       <option value="sound">Du học tiếng</option>
                     </select>

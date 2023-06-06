@@ -14,10 +14,8 @@ export default function Footer() {
                 MKGroup<span>.</span>
               </h3>
               <p>
-                số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
-                mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội <br />
-                <br />
-                - Việt Nam <br />
+                Số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
+                mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội - Việt Nam <br />
                 <br />
                 <strong>Điện thoại:</strong> 0974 082 088
                 <br />
@@ -53,7 +51,7 @@ export default function Footer() {
             </div>
 
             <div className="col-lg-3 col-md-6 footer-links">
-              <h4>Our Social Networks</h4>
+              <h4>Mạng xã hội</h4>
 
               <div className="social-links mt-3">
                 <a href="#" className="twitter">
@@ -83,7 +81,7 @@ export default function Footer() {
           <strong>
             <span>MK Group</span>
           </strong>
-          . All Rights Reserved
+          . Đã đăng ký Bản quyền
         </div>
         <div className="credits">
           Thiết kế bởi <a href="https://nitieii.netlify.app/">Ngo Tuan Anh</a>

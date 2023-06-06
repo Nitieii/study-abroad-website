@@ -7,6 +7,7 @@ import { vi } from "date-fns/locale";
 import "react-tabs/style/react-tabs.css";
 import Fanpage from "../components/Fanpage";
 import { usePathName, usePost } from "../hooks";
+import "../assets/css/lineClamp.css";
 
 const tabs = [
   {
@@ -99,7 +100,9 @@ const Culture = () => {
   useEffect(() => {
     setLoading(false);
     handleGetCulture(currentPage, cat, type);
-  }, [currentPage, type]);
+  }, [currentPage,cat,type]);
+
+  console.log(culture)
 
   return (
     <main id="main" data-aos="fade-up">
@@ -233,9 +236,10 @@ const Culture = () => {
                                     </span>
                                   </p>
                                   <p
+                                    className="line-clamp"
                                     style={{ fontSize: "14px" }}
                                     dangerouslySetInnerHTML={{
-                                      __html: item.content,
+                                      __html: item.description,
                                     }}
                                   ></p>
                                 </div>

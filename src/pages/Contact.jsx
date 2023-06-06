@@ -2,30 +2,31 @@ import { Link } from "react-router-dom";
 import { usePathName } from "../hooks";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import styles from "./select.css";
 
 const Contact = () => {
-   const { handleGetPathName } = usePathName();
-   const form  = useRef()
-   const sendEmail = (e) => {
-     e.preventDefault();
+  const { handleGetPathName } = usePathName();
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-     emailjs
-       .sendForm(
-         "service_h229yt4",
-         "template_r90zafv",
-         form.current,
-         "fjpC-B_Bu53YcXJPO"
-       )
-       .then(
-         (result) => {
-           console.log(result.text);
-         },
-         (error) => {
-           console.log(error.text);
-         }
-       );
-     e.target.reset();
-   };
+    emailjs
+      .sendForm(
+        "service_h229yt4",
+        "template_r90zafv",
+        form.current,
+        "fjpC-B_Bu53YcXJPO"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
+  };
 
   return (
     <main id="main" data-aos="fade-up">
@@ -59,7 +60,10 @@ const Contact = () => {
               <div className="info-box mb-4">
                 <i className="bx bx-map"></i>
                 <h3>Địa chỉ của chúng tôi</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>
+                  Số nhà 200, Block 20, Ô H-TT2 , khu nhà ở Hi Brand, khu đô thị
+                  mới Văn Phú, P. Phú La, Q. Hà Đông, Hà Nội - Việt Nam
+                </p>
               </div>
             </div>
 
@@ -67,7 +71,7 @@ const Contact = () => {
               <div className="info-box  mb-4">
                 <i className="bx bx-envelope"></i>
                 <h3>Email</h3>
-                <p>contact@example.com</p>
+                <p>mkhqmanpower@gmail.com</p>
               </div>
             </div>
 
@@ -75,7 +79,7 @@ const Contact = () => {
               <div className="info-box  mb-4">
                 <i className="bx bx-phone-call"></i>
                 <h3>Liên hệ</h3>
-                <p>+1 5589 55488 55</p>
+                <p>0974 082 088</p>
               </div>
             </div>
           </div>
@@ -120,6 +124,56 @@ const Contact = () => {
                       placeholder="Email của bạn"
                       required
                     />
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col form-group">
+                    <input
+                      type="text"
+                      name="phone"
+                      className="form-control"
+                      id="phone"
+                      placeholder="Số điện thoại của bạn"
+                      required
+                    />
+                  </div>
+                  <div className="col form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="level"
+                      id="level"
+                      placeholder="Trình độ học vấn của bạn"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col form-group">
+                    <select className="form-control">
+                      <option
+                        value=""
+                        disabled
+                        selected
+                        className={styles.placeholder}
+                      >
+                        Hình thức liên lạc
+                      </option>
+                      <option value="direct">Trực tiếp</option>
+                      <option value="phone">Trao đổi qua điện thoại</option>
+                      <option value="zalo">Zalo</option>
+                      <option value="email">Email</option>
+                    </select>
+                  </div>
+                  <div className="col form-group">
+                    <select className="form-control" id="mySelect">
+                      <option value="" disabled selected>
+                        Loại hình du học
+                      </option>
+                      <option value="carrer">Du học nghề</option>
+                      <option value="sound">Du học tiếng</option>
+                    </select>
                   </div>
                 </div>
                 <div className="form-group">

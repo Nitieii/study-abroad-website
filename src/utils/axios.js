@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// const ENDPOINT = 'https://blog-websit-api.onrender.com/api'
-const ENDPOINT =
-  "http://mkgroupstudyabroad-env-1.eba-yj6xkwkm.us-east-1.elasticbeanstalk.com/?fbclid=IwAR2Ee3OKr0QjA0lIrsjowGjWANXVS-PnZtoMeW0TV21s7m2xZkgzHHMiRp0";
+const ENDPOINT = 'https://blog-websit-api.onrender.com/api'
+// const ENDPOINT =
+//   "http://mkgroupstudyabroad-env-1.eba-yj6xkwkm.us-east-1.elasticbeanstalk.com/api";
 // const ENDPOINT = 'http://localhost:8080/api'
 
 const axiosInstance = axios.create({

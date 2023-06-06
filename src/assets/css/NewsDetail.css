@@ -1,12 +1,7 @@
 .NewDetails img {
-    width: 100%;
-    max-height: 200px !important;
     object-fit: cover;
 }
 
-.NewDetails p{
-    text-align: justify !important;
-}
 
 .NewDetails{
     font-family: 'Roboto', sans-serif !important;

@@ -91,8 +91,9 @@ const NewsDetail = () => {
   const currentPost = post.find((item) => item._id === id);
 
   useEffect(() => {
-    setNews(newsContent);
+    handleGetPost();
     setLoading(false);
+
   }, []);
 
   return (
