@@ -85,13 +85,13 @@ const NewsDetail = () => {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const { handleGetPathName } = usePathName();
-  const { post } = usePost();
+  const { post,handleGetPost } = usePost();
   const inputRef = useRef(null);
   const { id } = useParams();
   const currentPost = post.find((item) => item._id === id);
 
   useEffect(() => {
-    handleGetPost();
+    // handleGetPost();
     setLoading(false);
 
   }, []);
