@@ -296,7 +296,6 @@ const Homepage = () => {
                     <Link
                       to={`/thong-tin-du-hoc/${newsB._id}`}
                       className="news-title"
-                      
                     >
                       {newsB.title}
                     </Link>
@@ -411,7 +410,7 @@ const Homepage = () => {
                       </span>
                     </p>
                     <div
-                    className="line-clamp"
+                      className="line-clamp"
                       style={{ fontSize: "14px" }}
                       dangerouslySetInnerHTML={{
                         __html: newsB.description,
@@ -487,7 +486,7 @@ const Homepage = () => {
                     className="collapsed question"
                     href="#faq1"
                   >
-                    Non consectetur a erat nam at lectus urna duis?{" "}
+                    Độ tuổi đi du học Hàn Quốc là bao nhiêu ?
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
@@ -497,10 +496,36 @@ const Homepage = () => {
                     data-bs-parent=".faq-list"
                   >
                     <p>
-                      Feugiat pretium nibh ipsum consequat. Tempus iaculis urna
-                      id volutpat lacus laoreet non curabitur gravida. Venenatis
-                      lectus magna fringilla urna porttitor rhoncus dolor purus
-                      non.
+                      Du học không phải là xuất khẩu lao động nên vấn đề về tuổi
+                      tác khi đi du học cũng được Hàn Quốc quy định rất rõ. Cụ
+                      thể:
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: "bold" }}>
+                        Hệ Cao đẳng/ Đại học:
+                      </span>{" "}
+                      Nếu bạn dưới 24 tuổi thì có thể đăng ký học bất kỳ trường
+                      cao đẳng, đại học nào tại Hàn Quốc. Nếu bạn trên 24 tuổi
+                      bạn chỉ có thể đăng ký vào các trường ưu tiên visa thẳng
+                      của Hàn Quốc (tháng 2/2017 Hàn Quốc đã chọn ra 65 trường
+                      đại học và 7 trường cao đẳng ưu tiên visa thẳng). Tuy
+                      nhiên, theo kinh nghiệm thực tiễn của MK Group thì các
+                      trường CĐ, ĐH của Hàn Quốc cũng không muốn nhận các trường
+                      hợp hơn 25 tuổi. Trừ những ứng viên có học lực tốt, có
+                      tiếng Hàn tốt hoặc từng làm cho công ty Hàn Quốc tại Việt
+                      Nam. Lời khuyên dành cho bạn nếu trên 24 tuổi và mới chỉ
+                      tốt nghiệp cấp 3 khi chọn du học Hàn Quốc tốt nhất nên
+                      chọn du học nghề.
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: "bold" }}>Bậc cao học: </span>
+                      Bậc cao học độ tuổi quy định là dưới 30 tuổi.
+                    </p>
+                    <p>
+                      <span style={{ fontWeight: "bold" }}>Du học nghề: </span>
+                      Độ tuổi du học nghề phù hợp là từ 24 – 30 tuổi. Nếu bạn đã
+                      trên 26 tuổi và ngừng học tập được 3 năm thì lựa chọn duy
+                      nhất khi du học tại Hàn Quốc chỉ có thể là du học nghề.
                     </p>
                   </div>
                 </li>
@@ -511,8 +536,7 @@ const Homepage = () => {
                     href="#faq2"
                     className="collapsed question"
                   >
-                    Feugiat scelerisque varius morbi enim nunc faucibus a
-                    pellentesque?{" "}
+                    Đi du học Hàn Quốc dễ hay khó ?
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
@@ -522,12 +546,59 @@ const Homepage = () => {
                     data-bs-parent=".faq-list"
                   >
                     <p>
-                      Dolor sit amet consectetur adipiscing elit pellentesque
-                      habitant morbi. Id interdum velit laoreet id donec
-                      ultrices. Fringilla phasellus faucibus scelerisque
-                      eleifend donec pretium. Est pellentesque elit ullamcorper
-                      dignissim. Mauris ultrices eros in cursus turpis massa
-                      tincidunt dui.
+                      Vấn đề dễ hay khó phụ thuộc điều kiện và sự chuẩn bị chu
+                      đáo hay không của mỗi người.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Du học Hàn Quốc sẽ rất khó nếu:
+                    </p>
+                    <p>
+                      Không có sự chuẩn bị chu đáo: Không có kế hoạch và tìm
+                      hiểu kỹ về chương trình du học và các giấy tờ, thủ tục cần
+                      chuẩn bị để đi du học. Làm cho quá trình làm thủ tục bị
+                      gặp nhiều vấn đề, chẳng hạn như: Hồ sơ chưa đủ hoặc chưa
+                      đạt yêu cầu của trường đăng ký, khai báo thông tin cá nhân
+                      không chính xác dẫn tới phải điều tra lại. Những khó khăn
+                      về mặt hồ sơ sẽ là điều đầu tiên bạn cảm thấy “du học Hàn
+                      Quốc sao khó thế!”
+                    </p>
+                    <p>
+                      Không có vốn tiếng Hàn: Nếu như ở Việt Nam, tiếng Anh được
+                      sử dụng là ngôn ngữ thứ 2 thì ở Hàn Quốc họ chỉ nói tiếng
+                      Hàn. Người dân Hàn Quốc rất ít khi dùng tiếng Anh, do vậy,
+                      khi mới sang Hàn chắc chắn bạn sẽ gặp khó khăn khi hòa
+                      nhập với cuộc sống và học tâp ở đây.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Du học Hàn Quốc trở nên dễ dàng khi:{" "}
+                    </p>
+                    <p>
+                      Bạn có sự chuẩn bị kỹ giấy tờ cần có cho bộ hồ sơ. Không
+                      thiếu xót hay sai bất kỳ nội dung nào trong bộ hồ sơ. Hoàn
+                      thành chương trình cấp 3 với điểm trung bình học tập chỉ
+                      cần là trung bình khá trở lên. Những trường công hay
+                      trường visa thẳng sẽ là từ mức khá trở lên.
+                    </p>
+                    <p>
+                      Chứng minh được tài chính du học, bạn chỉ cần có 10.000
+                      USD trong tài khoản hoặc sổ tiết kiệm là có thể vi vu du
+                      học Hàn Quốc rồi.
+                    </p>
+                    <p>
+                      Trình độ tiếng Hàn của bạn kém? Vấn đề này sẽ trở nên dễ
+                      dàng bởi ở VN cũng có rất nhiều lớp tiếng Hàn sơ cấp, chỉ
+                      cần chăm chỉ học với khoảng 3 tháng là bạn có thể giao
+                      tiếp đơn giản bằng tiếng Hàn. Độ khó của tiếng Hàn không
+                      quá khó như tiếng Đức hay Pháp, Nhật. Thời gian học cũng
+                      ngắn hơn nhiều. Ước mơ du học của bạn sẽ tiến gần hơn bao
+                      giờ hết.
+                    </p>
+                    <p>
+                      Nhìn chung, du học Hàn Quốc khó hay dễ phụ thuộc vào bản
+                      thân từng người. Khi bạn có dự định du học Hàn Quốc thì
+                      hãy chuẩn bị chu đáo mọi hành trang cho bản thân mình,
+                      nhất là về ngoại ngữ tiếng Hàn. Khi mọi thứ đã sẵn sàng
+                      thì không còn gì là khó khăn cản trở bạn nữa.
                     </p>
                   </div>
                 </li>
@@ -538,8 +609,7 @@ const Homepage = () => {
                     href="#faq3"
                     className="collapsed question"
                   >
-                    Dolor sit amet consectetur adipiscing elit pellentesque
-                    habitant morbi?{" "}
+                    Du học Hàn Quốc có tốt không ?
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
@@ -549,12 +619,89 @@ const Homepage = () => {
                     data-bs-parent=".faq-list"
                   >
                     <p>
-                      Eleifend mi in nulla posuere sollicitudin aliquam ultrices
-                      sagittis orci. Faucibus pulvinar elementum integer enim.
-                      Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
-                      tellus pellentesque eu tincidunt. Lectus urna duis
-                      convallis convallis tellus. Urna molestie at elementum eu
-                      facilisis sed odio morbi quis
+                      Nhiều bạn đang đắn đo, không biết có nên quyết định du học
+                      Hàn Quốc hay không. Liệu du học Hàn Quốc có tốt không? Nếu
+                      bạn cũng đang có cùng mối lo trên. Hãy cùng MK Group điểm
+                      qua vài ưu điểm nổi trội khi du học Hàn nhé!
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Hàn Quốc là đất nước văn minh, có nền Khoa học ứng dụng và
+                      công nghệ tiên tiến
+                    </p>
+                    <p>
+                      Hàn Quốc đứng số 1/152 quốc gia trong cuộc khảo sát về chỉ
+                      số ICT do Hội Liên Minh Viễn Thông Quốc Tế (ITU) tổ chức.
+                      Trong lĩnh vực điện tử viễn thông, Hàn Quốc cũng là quốc
+                      gia đạt tiêu chuẩn của thế giới. Với các ngành nổi bật như
+                      máy móc, đóng tàu, công nghiệp chế biến…
+                    </p>
+                    <p>
+                      Nền kinh tế Hàn Quốc được mệnh danh là 1 trong 4 con rồng
+                      của Châu Á. Các tập đoàn lớn đang “xâm chiếm” thị trường
+                      tiêu dùng trên toàn thế giới như Lotte, Samsung, Daiwoo,…
+                    </p>
+                    <p>
+                      Được học tập tại đất nước có nền công nghệ khoa học tiên
+                      tiến và một nền kinh tế hàng đầu Châu Á. Sẽ là nền tảng
+                      vững chắc cho bạn học tập và tích lũy kinh nghiệm, mở ra
+                      tương lai thành công hơn.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Điều kiện nhập học đơn giản hơn so với các nước Châu Âu
+                    </p>
+                    <p>
+                      Ở trên có các mục điều kiện cụ thể khi muốn du học Hàn
+                      Quốc. Nếu bạn đã từng tham khảo các chương trình du học ở
+                      các nước khu vực Châu Âu. Thì chắc chắn bạn sẽ nhận ra
+                      rằng điều kiện nhập học vào Hàn Quốc không “khó nhằn” như
+                      các nước Châu Âu.
+                    </p>
+                    <p>
+                      Ngoại trừ những trường có yêu cầu riêng biệt như có tiếng
+                      Anh hay học lực khá giỏi. Thì hầu hết các trường của Hàn
+                      đều chỉ có vài yêu cầu cơ bản như:
+                    </p>
+                    <p>• Đã tốt nghiệp THPT, lực học trung bình trở lên.</p>
+                    <p>• Nếu theo học hệ CĐ/ĐH thì có độ tuổi dưới 24 tuổi.</p>
+                    <p>
+                      • Và chứng minh tài chính cũng chỉ từ 10.000 – 30.000 USD
+                      trong sổ tiết kiệm/thẻ ngân hàng là có thể “trót lọt”.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Đi lại thuận tiện và chỗ ở đẹp{" "}
+                    </p>
+                    <p>
+                      Hệ thống giao thông của Hàn Quốc rất hiện đại, thuận tiện
+                      và sạch sẽ. Với hệ thống tàu điện ngầm, xe bus thân thiện
+                      và thơm tho. Mà chi phí lại rất rẻ. Việc đi lại của các
+                      bạn khi đi phương tiện công cộng sẽ không có vấn đề gì
+                      phải lo ngại. Các khu ký túc xá của các trường Hàn Quốc
+                      đều rất khang trang, đầy đủ mọi tiện nghi. Khuôn viên khá
+                      là thơ mộng.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Chi phí du học Hàn Quốc thấp hơn so với nhiều nước khác
+                    </p>
+                    <p>
+                      Mọi khoản chi phí khi du học Hàn Quốc đều rẻ hơn so với
+                      các nước học bằng tiếng Anh. Như Mỹ, Canada, Anh, Pháp…
+                      Chính phủ Hàn Quốc cũng không thu thêm bất kỳ khoản phụ
+                      thu nào của du học sinh quốc tế.
+                    </p>
+                    <p>
+                      Đất nước này sẽ có rất nhiều chính sách ưu đãi hỗ trợ sinh
+                      viên quốc tế như: Cấp các khoản học bổng, tạo thêm nhiều
+                      chỗ ở KTX, hỗ trợ tìm việc làm thêm,…. Giảm bớt các quy
+                      chế phức tạp làm quá trình du học Hàn Quốc bị khó khăn.
+                    </p>
+                    <p style={{ fontWeight: "bold" }}>
+                      Việc làm thêm rủng rỉnh
+                    </p>
+                    <p>
+                      Hàn Quốc cho phép du học sinh quốc tế đi làm thêm. Đồng
+                      thời cũng tạo nhiều cơ chế hỗ trợ sinh viên tìm việc làm
+                      thêm. Bạn có thể làm việc ngay tại trường hoặc làm thêm ở
+                      ngoài. Các công việc cũng rất nhiều, thoải mái lựa chọn.
                     </p>
                   </div>
                 </li>
@@ -565,7 +712,7 @@ const Homepage = () => {
                     href="#faq4"
                     className="collapsed question"
                   >
-                    Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?{" "}
+                    Có lưu ý gì về đồ dùng mang theo khi sang Hàn Quốc?
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
@@ -574,14 +721,11 @@ const Homepage = () => {
                     className="collapse"
                     data-bs-parent=".faq-list"
                   >
-                    <p>
-                      Dolor sit amet consectetur adipiscing elit pellentesque
-                      habitant morbi. Id interdum velit laoreet id donec
-                      ultrices. Fringilla phasellus faucibus scelerisque
-                      eleifend donec pretium. Est pellentesque elit ullamcorper
-                      dignissim. Mauris ultrices eros in cursus turpis massa
-                      tincidunt dui.
-                    </p>
+                    <p>Khi sang Hàn, du học sinh lưu ý nên mang theo:</p>
+                    <p>• Các loại thuốc</p>
+                    <p>• Ổ cắm chuyển đổi bởi ở Hàn chủ yếu dùng ổ cắm tròn.</p>
+                    <p>• Không mang hoa quả, đồ ăn khô như giò, ruốc, thịt.</p>
+                    <p>• Quần áo dày vừa phải.</p>
                   </div>
                 </li>
 
@@ -591,8 +735,8 @@ const Homepage = () => {
                     href="#faq5"
                     className="collapsed question"
                   >
-                    Tempus quam pellentesque nec nam aliquam sem et tortor
-                    consequat? <i className="bi bi-chevron-down icon-show"></i>
+                    Nên đi du học vào tháng mấy?
+                    <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
                   <div
@@ -601,11 +745,48 @@ const Homepage = () => {
                     data-bs-parent=".faq-list"
                   >
                     <p>
-                      Molestie a iaculis at erat pellentesque adipiscing
-                      commodo. Dignissim suspendisse in est ante in. Nunc vel
-                      risus commodo viverra maecenas accumsan. Sit amet nisl
-                      suscipit adipiscing bibendum est. Purus gravida quis
-                      blandit turpis cursus in
+                      Về thời gian nhập học 1 năm sẽ có 4 kỳ là tháng 3, tháng
+                      6, tháng 9 và tháng 12. Tuy nhiên thời điểm lí tưởng để đi
+                      du học Hàn Quốc là tháng 3, tháng 6 và tháng 9 tương ứng
+                      với mùa xuân, hạ và thu. Lí do là bởi khí hậu trong các
+                      tháng này gần giống với khí hậu Việt Nam, tuy nhiên mùa hè
+                      lại không quá nóng và mùa thu thì mát mẻ hơn. Nhờ vậy, du
+                      học sinh có thể thích nghi với cuộc sống mới nhanh hơn mà
+                      không bị ảnh hưởng quá nhiều bởi sự thay đổi đột ngột của
+                      thời tiết giữa hai nước. Ngoài ra đặc biệt đối với du học
+                      nghề sẽ xét tuyển liên tục và các bạn có thể nhập học mà
+                      không cần đợi theo kỳ.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <div
+                    data-bs-toggle="collapse"
+                    href="#faq7"
+                    className="collapsed question"
+                  >
+                    Tôi đã từng đi xuất khẩu lao động Đài Loan và bỏ trốn, nhưng
+                    sau đó đã ra đầu thú. Vậy, tôi vẫn có thể tiếp tục đi xuất
+                    khẩu lao động Hàn Quốc làm việc được nữa hay không?
+                    <i className="bi bi-chevron-down icon-show"></i>
+                    <i className="bi bi-chevron-up icon-close"></i>
+                  </div>
+                  <div
+                    id="faq7"
+                    className="collapse"
+                    data-bs-parent=".faq-list"
+                  >
+                    <p>
+                      Nếu đúng là người lao động đã từng bỏ trốn khi tham gia
+                      xuất khẩu lao động ở nước khác có ý thức tự giác ra đầu
+                      thú thì người lao động đó vẫn có thể đi làm việc tai Hàn
+                      Quốc được. Trong trường hợp lao động bỏ trốn khi tham đang
+                      trong hợp đồng xuất khẩu lao động ở nước khác mà bị công
+                      an bắt, lao động vẫn có khả năng tham gia xuất khẩu lao
+                      động Hàn Quốc làm việc được – con số này không cao – nhưng
+                      cần phải tư vấn thêm cho những lao động rơi vào trường hợp
+                      này.
                     </p>
                   </div>
                 </li>
@@ -616,8 +797,8 @@ const Homepage = () => {
                     href="#faq6"
                     className="collapsed question"
                   >
-                    Tortor vitae purus faucibus ornare. Varius vel pharetra vel
-                    turpis nunc eget lorem dolor?{" "}
+                    Trên người có hình xăm thì có thể đi xuất khẩu lao động Hàn
+                    Quốc được không?
                     <i className="bi bi-chevron-down icon-show"></i>
                     <i className="bi bi-chevron-up icon-close"></i>
                   </div>
@@ -627,13 +808,11 @@ const Homepage = () => {
                     data-bs-parent=".faq-list"
                   >
                     <p>
-                      Laoreet sit amet cursus sit amet dictum sit amet justo.
-                      Mauris vitae ultricies leo integer malesuada nunc vel.
-                      Tincidunt eget nullam non nisi est sit amet. Turpis nunc
-                      eget lorem dolor sed. Ut venenatis tellus in metus
-                      vulputate eu scelerisque. Pellentesque diam volutpat
-                      commodo sed egestas egestas fringilla phasellus faucibus.
-                      Nibh tellus molestie nunc non blandit massa enim nec.
+                      Đối với lao động có hình xăm trên người cũng không ảnh
+                      hưởng gì đến quá trình tham gia đi Xuất khẩu lao động Hàn
+                      Quốc. Tuy nhiên nếu như hình xăm của bạn quá lớn điều này
+                      cũng có thể làm mất điểm trong mắt các nhà tuyển dụng Hàn
+                      Quốc.
                     </p>
                   </div>
                 </li>
