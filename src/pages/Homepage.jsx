@@ -433,7 +433,7 @@ const Homepage = () => {
         </div>
       </div>
 
-      <section id="testimonials" className="testimonials">
+      {/* <section id="testimonials" className="testimonials">
         <div className="container" data-aos="zoom-in">
           <h3 style={{ color: "white", textAlign: "center", margin: "15px" }}>
             Đánh Giá Của Khách Hàng
@@ -467,7 +467,7 @@ const Homepage = () => {
             </Carousel>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="faq" className="faq section-bg">
         <div className="container" data-aos="fade-up">
