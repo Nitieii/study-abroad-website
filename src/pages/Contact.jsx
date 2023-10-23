@@ -72,7 +72,7 @@ const Contact = () => {
               <div className="info-box  mb-4">
                 <i className="bx bx-envelope"></i>
                 <h3>Email</h3>
-                <p>mkhqmanpower@gmail.com</p>
+                <p>mkgroup.manpower68@gmail.com</p>
               </div>
             </div>
 

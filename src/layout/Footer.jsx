@@ -20,7 +20,7 @@ export default function Footer() {
                 <br />
                 <strong>Điện thoại:</strong> 0974 082 088
                 <br />
-                <strong>Email:</strong> mkhqmanpower@gmail.com
+                <strong>Email:</strong> mkgroup.manpower68@gmail.com
                 <br />
               </p>
             </div>

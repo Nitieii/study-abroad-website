@@ -89,7 +89,7 @@ export default function NavBar() {
           <div className="contact-info d-flex align-items-center">
             <i className="bi bi-envelope d-flex align-items-center">
               <Link to="mailto:contact@example.com">
-                mkhqmanpower@gmail.com
+                mkgroup.manpower68@gmail.com
               </Link>
             </i>
             <i className="bi bi-phone d-flex align-items-center ms-4">
