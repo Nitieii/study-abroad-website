@@ -18,7 +18,7 @@ import "../assets/css/lineClamp.css";
 
 const slides = [
   {
-    src: "https://duhocmkgroup.s3.ap-southeast-1.amazonaws.com/z4812431809688_d0477b864c34fa26a5449df4ec129e5b.jpg",
+    src: "https://duhocmkgroup.s3.ap-southeast-1.amazonaws.com/z4812430959236_abd80fa0833bfddb61c97ab934bc5c0d.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
@@ -192,9 +192,10 @@ const Homepage = () => {
             className="d-flex align-items-center"
             style={{
               width: "100%",
-              height: "60vh",
+              height: "80vh",
               background: `url(${slide.src})`,
               backgroundSize: "cover",
+              backgroundPosition: "center",
             }}
           >
             <div className="container" data-aos="zoom-out" data-aos-delay="100">
