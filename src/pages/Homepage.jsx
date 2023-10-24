@@ -18,17 +18,17 @@ import "../assets/css/lineClamp.css";
 
 const slides = [
   {
-    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero.jpg",
+    src: "https://duhocmkgroup.s3.ap-southeast-1.amazonaws.com/z4812431809688_d0477b864c34fa26a5449df4ec129e5b.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
   {
-    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero2.jpg",
+    src: "https://duhocmkgroup.s3.ap-southeast-1.amazonaws.com/z4812431809688_d0477b864c34fa26a5449df4ec129e5b.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
   {
-    src: "https://todo-list-app-asdfasd.s3.amazonaws.com/hero1.jpg",
+    src: "https://duhocmkgroup.s3.ap-southeast-1.amazonaws.com/z4812432354819_f3b3f2d5fc5c9d746914f5b37b879493.jpg",
     altText: "Slide 1",
     caption: "Slide 1",
   },
